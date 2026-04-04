@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.14/dist/leaflet.draw.css" />
     <style>
         body { margin: 0; padding: 0; font-family: sans-serif; display: flex; height: 100vh; }
-        #sidebar { width: 350px; padding: 20px; background: #f8f9fa; border-right: 1px solid #ddd; overflow-y: auto; box-shadow: 2px 0 5px rgba(0,0,0,0.1); z-index: 1000; }
+        #sidebar { width: 350px; padding: 0; background: #f8f9fa; border-right: 1px solid #ddd; display: flex; flex-direction: column; box-shadow: 2px 0 5px rgba(0,0,0,0.1); z-index: 1000; }
+        .tabs { display: flex; background: #e9ecef; border-bottom: 1px solid #ddd; }
+        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; font-weight: bold; font-size: 0.9em; border-bottom: 2px solid transparent; }
+        .tab.active { background: #f8f9fa; border-bottom: 2px solid #007bff; color: #007bff; }
+        .tab-content { padding: 20px; overflow-y: auto; flex-grow: 1; }
         #right-panel { width: 300px; padding: 20px; background: #f8f9fa; border-left: 1px solid #ddd; overflow-y: auto; box-shadow: -2px 0 5px rgba(0,0,0,0.1); z-index: 1000; }
         #map { flex-grow: 1; height: 100%; }
         .control-group { margin-bottom: 15px; }
@@ -20,117 +24,195 @@
         .stats { margin-top: 20px; padding: 10px; background: #e9ecef; border-radius: 4px; font-size: 0.85em; }
         #search-container { position: absolute; top: 10px; left: 370px; z-index: 1000; background: white; padding: 5px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; }
         #search-input { width: 250px; border: none; padding: 5px; outline: none; }
+        #preview-3d { width: 100%; height: 250px; background: #1a1a1a; margin-top: 15px; border-radius: 4px; position: relative; overflow: hidden; perspective: 800px; display: none; }
+        .ring-3d { position: absolute; border: 1px dashed rgba(0, 123, 255, 0.5); border-radius: 50%; transform-style: preserve-3d; transition: transform 0.5s; }
+        .wp-dot-3d { position: absolute; width: 4px; height: 4px; background: yellow; border-radius: 50%; transform: translate(-50%, -50%); }
+        .pyramid-3d { position: absolute; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 10px solid yellow; transform-origin: 50% 0%; }
+        .cylinder-3d { position: absolute; background: rgba(255, 0, 0, 0.2); border: 1px solid rgba(255, 0, 0, 0.4); transform-style: preserve-3d; }
     </style>
 </head>
 <body>
     <div id="sidebar">
-        <h2>Flight Planner</h2>
-        <div class="control-group">
-            <label>Flying Height (m)</label>
-            <input type="number" id="height" value="50" step="1">
-        </div>
-        <div class="control-group">
-            <label>Front Overlap (%)</label>
-            <input type="number" id="frontOverlap" value="80" step="1">
-        </div>
-        <div class="control-group">
-            <label>Side Overlap (%)</label>
-            <input type="number" id="sideOverlap" value="70" step="1">
-        </div>
-        <div class="control-group">
-            <label>Flight Speed (m/s)</label>
-            <input type="number" id="speed" value="5" step="0.1">
-        </div>
-        <div class="control-group">
-            <label>Flight Direction (° North)</label>
-            <input type="number" id="direction" value="0" min="0" max="359">
-        </div>
-        <div class="control-group">
-            <label>Camera Angle (° Nadir= -90)</label>
-            <input type="number" id="cameraAngle" value="-90" min="-90" max="0">
-        </div>
-        <div class="control-group">
-            <label>Focal Length (mm real)</label>
-            <select id="focalLength">
-                <option value="6.78">Standard (6.78 mm)</option>
-                <option value="4.8">Wide Angle (4.8 mm)</option>
-            </select>
-        </div>
-        <div class="control-group">
-            <label>Trigger Mode</label>
-            <select id="triggerMode">
-                <option value="optimized">Optimized (Manual Timed Shot)</option>
-                <option value="precise">Precise (Waypoint per Photo)</option>
-            </select>
-        </div>
-        <div id="precise-settings" style="display: none; border: 1px solid #ddd; padding: 10px; border-radius: 4px; background: #fff; margin-bottom: 15px;">
-            <h4 style="margin-top: 0;">Camera Settings (Precise Only)</h4>
-            <div class="control-group">
-                <label>Image Format</label>
-                <select id="imageFormat">
-                    <option value="JPEG">JPEG</option>
-                    <option value="DNG">DNG (RAW)</option>
-                    <option value="JPEG_DNG">JPEG + DNG</option>
-                </select>
-            </div>
-            <div class="control-group">
-                <label>White Balance</label>
-                <select id="whiteBalance">
-                    <option value="AUTO">Auto</option>
-                    <option value="SUNNY">Sunny</option>
-                    <option value="CLOUDY">Cloudy</option>
-                    <option value="CUSTOM">Custom (Kelvin)</option>
-                </select>
-            </div>
-            <div class="control-group">
-                <label>ISO</label>
-                <select id="iso">
-                    <option value="AUTO">Auto</option>
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="400">400</option>
-                    <option value="800">800</option>
-                </select>
-            </div>
-            <div class="control-group">
-                <label>Shutter Speed</label>
-                <select id="shutterSpeed">
-                    <option value="AUTO">Auto</option>
-                    <option value="1/500">1/500</option>
-                    <option value="1/1000">1/1000</option>
-                    <option value="1/2000">1/2000</option>
-                    <option value="1/4000">1/4000</option>
-                </select>
-            </div>
-            <div class="control-group">
-                <label>Focus Mode (Tiefenschärfe)</label>
-                <select id="focusMode">
-                    <option value="AUTO">Auto Focus (AF)</option>
-                    <option value="INFINITY">Infinity (∞ / Berg-Symbol)</option>
-                    <option value="NEAR">Near (Nahbereich)</option>
-                </select>
-            </div>
-            <div class="control-group">
-                <label>Gimbal Pitch Override (°)</label>
-                <input type="number" id="gimbalOverride" value="-90" min="-90" max="0">
-            </div>
-        </div>
-        <div class="control-group">
-            <label>
-                <input type="checkbox" id="terrainFollow" checked> Terrain Follow (AMSL)
-            </label>
-        </div>
-        <button id="generateBtn">Generate Flight Plan</button>
-        <button id="exportBtn" class="secondary" disabled>Export KMZ</button>
-        <div class="control-group" style="margin-top: 10px;">
-            <label>Import DJI KMZ</label>
-            <input type="file" id="importFile" accept=".kmz" style="font-size: 0.8em;">
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('mapping')">Mapping</div>
+            <div class="tab" onclick="switchTab('inspection')">Inspection</div>
         </div>
         
-        <div class="stats" id="stats">
-            Waypoints: 0 / 200<br>
-            Estimated Photos: 0<br>
-            Interval: - s
+        <div id="mapping-tab" class="tab-content">
+            <h2>Flight Mapping Planner</h2>
+            <div class="control-group">
+                <label>Flying Height (m)</label>
+                <input type="number" id="height" value="50" step="1">
+            </div>
+            <div class="control-group">
+                <label>Front Overlap (%)</label>
+                <input type="number" id="frontOverlap" value="80" step="1">
+            </div>
+            <div class="control-group">
+                <label>Side Overlap (%)</label>
+                <input type="number" id="sideOverlap" value="70" step="1">
+            </div>
+            <div class="control-group">
+                <label>Flight Speed (m/s)</label>
+                <input type="number" id="speed" value="5" step="0.1">
+            </div>
+            <div class="control-group">
+                <label>Flight Direction (° North)</label>
+                <input type="number" id="direction" value="0" min="0" max="359">
+            </div>
+            <div class="control-group">
+                <label>Camera Angle (° Nadir= -90)</label>
+                <input type="number" id="cameraAngle" value="-90" min="-90" max="0">
+            </div>
+            <div class="control-group">
+                <label>Focal Length (mm real)</label>
+                <select id="focalLength">
+                    <option value="6.78">Standard (6.78 mm)</option>
+                    <option value="4.8">Wide Angle (4.8 mm)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Trigger Mode</label>
+                <select id="triggerMode">
+                    <option value="optimized">Optimized (Manual Timed Shot)</option>
+                    <option value="precise">Precise (Waypoint per Photo)</option>
+                </select>
+            </div>
+            <div id="precise-settings" style="display: none; border: 1px solid #ddd; padding: 10px; border-radius: 4px; background: #fff; margin-bottom: 15px;">
+                <h4 style="margin-top: 0;">Camera Settings (Precise Only)</h4>
+                <div class="control-group">
+                    <label>Image Format</label>
+                    <select id="imageFormat">
+                        <option value="JPEG">JPEG</option>
+                        <option value="DNG">DNG (RAW)</option>
+                        <option value="JPEG_DNG">JPEG + DNG</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>White Balance</label>
+                    <select id="whiteBalance">
+                        <option value="AUTO">Auto</option>
+                        <option value="SUNNY">Sunny</option>
+                        <option value="CLOUDY">Cloudy</option>
+                        <option value="CUSTOM">Custom (Kelvin)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>ISO</label>
+                    <select id="iso">
+                        <option value="AUTO">Auto</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="400">400</option>
+                        <option value="800">800</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Shutter Speed</label>
+                    <select id="shutterSpeed">
+                        <option value="AUTO">Auto</option>
+                        <option value="1/500">1/500</option>
+                        <option value="1/1000">1/1000</option>
+                        <option value="1/2000">1/2000</option>
+                        <option value="1/4000">1/4000</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Focus Mode (Tiefenschärfe)</label>
+                    <select id="focusMode">
+                        <option value="AUTO">Auto Focus (AF)</option>
+                        <option value="INFINITY">Infinity (∞ / Berg-Symbol)</option>
+                        <option value="NEAR">Near (Nahbereich)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Gimbal Pitch Override (°)</label>
+                    <input type="number" id="gimbalOverride" value="-90" min="-90" max="0">
+                </div>
+            </div>
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="terrainFollow" checked> Terrain Follow (AMSL)
+                </label>
+            </div>
+            <button id="generateBtn">Generate Flight Plan</button>
+            <button id="exportBtn" class="secondary" disabled>Export KMZ</button>
+            <div class="control-group" style="margin-top: 10px;">
+                <label>Import DJI KMZ</label>
+                <input type="file" id="importFile" accept=".kmz" style="font-size: 0.8em;">
+            </div>
+            <div class="stats" id="stats">
+                Waypoints: 0 / 200<br>
+                Estimated Photos: 0<br>
+                Interval: - s
+            </div>
+        </div>
+
+        <div id="inspection-tab" class="tab-content" style="display: none;">
+            <h2>Flight Inspection Planner</h2>
+            <div class="control-group">
+                <label>Object Radius (m)</label>
+                <input type="number" id="objRadius" value="10" step="1">
+            </div>
+            <div class="control-group">
+                <label>Distance to Object (m)</label>
+                <input type="number" id="objDistance" value="15" step="1">
+            </div>
+            <div class="control-group">
+                <label>Object Height (m)</label>
+                <input type="number" id="objHeight" value="20" step="1">
+            </div>
+            <div class="control-group">
+                <label>Segments</label>
+                <select id="objSegments">
+                    <option value="32">32 Segments</option>
+                    <option value="64">64 Segments</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Flight Levels</label>
+                <select id="objLevels">
+                    <option value="1">1 Level</option>
+                    <option value="2">2 Levels</option>
+                    <option value="3">3 Levels</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Camera Pitch (°)</label>
+                <input type="number" id="objCameraAngle" value="0" min="-90" max="90">
+            </div>
+            <div id="inspection-camera-settings" style="border: 1px solid #ddd; padding: 10px; border-radius: 4px; background: #fff; margin-bottom: 15px;">
+                <h4 style="margin-top: 0;">Camera Settings (Inspection)</h4>
+                <div class="control-group">
+                    <label>Image Format</label>
+                    <select id="inspImageFormat">
+                        <option value="JPEG">JPEG</option>
+                        <option value="DNG">DNG (RAW)</option>
+                        <option value="JPEG_DNG">JPEG + DNG</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>ISO</label>
+                    <select id="inspIso">
+                        <option value="AUTO">Auto</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="400">400</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Shutter Speed</label>
+                    <select id="inspShutterSpeed">
+                        <option value="AUTO">Auto</option>
+                        <option value="1/500">1/500</option>
+                        <option value="1/1000">1/1000</option>
+                        <option value="1/2000">1/2000</option>
+                    </select>
+                </div>
+            </div>
+            <button id="generateInspBtn">Generate Inspection Plan</button>
+            <button id="exportInspBtn" class="secondary" disabled>Export Inspection KMZ</button>
+            <div id="preview-3d"></div>
         </div>
     </div>
 

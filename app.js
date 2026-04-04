@@ -7,9 +7,34 @@ const SENSOR_HEIGHT = IMAGE_HEIGHT * PIXEL_SIZE; // mm
 
 const DJI_INTERVALS = [2, 3, 5, 7, 10, 15, 20, 30, 60];
 
-let map, drawnItems, polygonLayer;
+let map, drawnItems, polygonLayer, centerMarker;
 let flightLines = [];
 let waypoints = [];
+let currentTab = 'mapping';
+
+function switchTab(tab) {
+    currentTab = tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelector(`.tab[onclick="switchTab('${tab}')"]`).classList.add('active');
+    document.getElementById('mapping-tab').style.display = tab === 'mapping' ? 'block' : 'none';
+    document.getElementById('inspection-tab').style.display = tab === 'inspection' ? 'block' : 'none';
+    
+    // Update draw controls based on tab
+    if (tab === 'inspection') {
+        // In inspection mode, we want a single point
+        map.removeControl(window.drawControl);
+        window.drawControl = new L.Control.Draw({
+            draw: { marker: true, polygon: false, polyline: false, rectangle: false, circle: false, circlemarker: false }
+        });
+        map.addControl(window.drawControl);
+    } else {
+        map.removeControl(window.drawControl);
+        window.drawControl = new L.Control.Draw({
+            draw: { polygon: true, marker: false, polyline: false, rectangle: false, circle: false, circlemarker: false }
+        });
+        map.addControl(window.drawControl);
+    }
+}
 
 // Initialize Map
 function initMap() {
@@ -39,7 +64,7 @@ function initMap() {
     drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
 
-    const drawControl = new L.Control.Draw({
+    window.drawControl = new L.Control.Draw({
         edit: { featureGroup: drawnItems },
         draw: {
             polygon: true,
@@ -50,13 +75,19 @@ function initMap() {
             circlemarker: false
         }
     });
-    map.addControl(drawControl);
+    map.addControl(window.drawControl);
 
     map.on(L.Draw.Event.CREATED, function (event) {
         drawnItems.clearLayers();
-        polygonLayer = event.layer;
-        drawnItems.addLayer(polygonLayer);
-        updateFlightPlan();
+        if (currentTab === 'mapping') {
+            polygonLayer = event.layer;
+            drawnItems.addLayer(polygonLayer);
+            updateFlightPlan();
+        } else {
+            centerMarker = event.layer;
+            drawnItems.addLayer(centerMarker);
+            generateInspectionPlan();
+        }
     });
 
     // Search functionality
@@ -69,6 +100,213 @@ function initMap() {
         updateFlightPlan();
     };
 }
+
+async function generateInspectionPlan() {
+    if (!centerMarker) return;
+    const center = centerMarker.getLatLng();
+    const objRadius = parseFloat(document.getElementById('objRadius').value);
+    const objDistance = parseFloat(document.getElementById('objDistance').value);
+    const objHeight = parseFloat(document.getElementById('objHeight').value);
+    const segments = parseInt(document.getElementById('objSegments').value);
+    const levels = parseInt(document.getElementById('objLevels').value);
+    const cameraPitch = parseFloat(document.getElementById('objCameraAngle').value);
+    
+    const flightRadius = objRadius + objDistance;
+    const waypointsList = [];
+    
+    // Fetch terrain height for center
+    const response = await fetch(`https://api.open-elevation.com/api/v1/lookup?locations=${center.lat},${center.lng}`);
+    const data = await response.json();
+    const terrainAlt = data.results[0].elevation;
+
+    for (let l = 1; l <= levels; l++) {
+        const levelHeight = (objHeight / levels) * l;
+        const absAlt = terrainAlt + levelHeight;
+        
+        for (let i = 0; i < segments; i++) {
+            const angle = (i / segments) * 2 * Math.PI;
+            const dx = flightRadius * Math.cos(angle);
+            const dy = flightRadius * Math.sin(angle);
+            
+            // Convert meters to lat/lng (approximate)
+            const lat = center.lat + (dy / 111320);
+            const lng = center.lng + (dx / (111320 * Math.cos(center.lat * Math.PI / 180)));
+            
+            // Calculate heading towards center
+            const heading = (angle * 180 / Math.PI + 180) % 360;
+            
+            waypointsList.push({
+                lat: lat,
+                lng: lng,
+                alt: absAlt,
+                heading: heading,
+                pitch: cameraPitch,
+                action: 'take_photo',
+                label: `Level ${l} - Shot ${i+1}`
+            });
+        }
+    }
+    
+    waypoints = waypointsList;
+    renderWaypoints(0, (objHeight/levels).toFixed(1));
+    update3DPreview(levels, objHeight, objRadius, flightRadius, segments, cameraPitch);
+    document.getElementById('exportInspBtn').disabled = false;
+}
+
+function update3DPreview(levels, totalHeight, objRadius, flightRadius, segments, cameraPitch) {
+    const preview = document.getElementById('preview-3d');
+    preview.style.display = 'block';
+    preview.innerHTML = '';
+    
+    const scale = 100 / flightRadius; // Scale to fit preview
+    
+    // Draw Cylinder (Object)
+    const cylinder = document.createElement('div');
+    cylinder.className = 'cylinder-3d';
+    const cylSize = objRadius * 2 * scale;
+    cylinder.style.width = `${cylSize}px`;
+    cylinder.style.height = `${cylSize}px`;
+    cylinder.style.left = `${(250 - cylSize) / 2}px`;
+    cylinder.style.top = `${(250 - cylSize) / 2}px`;
+    cylinder.style.borderRadius = '50%';
+    cylinder.style.transform = `rotateX(70deg) translateZ(0px)`;
+    cylinder.style.height = `${totalHeight * scale}px`; // Use height for Z-axis
+    cylinder.style.background = 'linear-gradient(to bottom, rgba(255,0,0,0.1), rgba(255,0,0,0.3))';
+    preview.appendChild(cylinder);
+
+    for (let l = 1; l <= levels; l++) {
+        const ring = document.createElement('div');
+        ring.className = 'ring-3d';
+        const ringSize = flightRadius * 2 * scale;
+        const zPos = (l / levels) * 100;
+        
+        ring.style.width = `${ringSize}px`;
+        ring.style.height = `${ringSize}px`;
+        ring.style.left = `${(250 - ringSize) / 2}px`;
+        ring.style.top = `${(250 - ringSize) / 2}px`;
+        ring.style.transform = `rotateX(70deg) translateZ(${zPos}px)`;
+        
+        // Add Waypoint Pyramids
+        for (let s = 0; s < segments; s++) {
+            const pyramid = document.createElement('div');
+            pyramid.className = 'pyramid-3d';
+            const angle = (s / segments) * 2 * Math.PI;
+            const dx = (ringSize / 2) + (ringSize / 2) * Math.cos(angle);
+            const dy = (ringSize / 2) + (ringSize / 2) * Math.sin(angle);
+            
+            pyramid.style.left = `${dx}px`;
+            pyramid.style.top = `${dy}px`;
+            
+            // Rotate pyramid to face center and apply pitch
+            const headingAngle = (angle * 180 / Math.PI) + 90;
+            pyramid.style.transform = `rotate(${headingAngle}deg) rotateX(${cameraPitch}deg)`;
+            
+            ring.appendChild(pyramid);
+        }
+        
+        preview.appendChild(ring);
+    }
+}
+
+document.getElementById('exportInspBtn').onclick = async () => {
+    const zip = new JSZip();
+    const wpmz = zip.folder("wpmz");
+    
+    const format = document.getElementById('inspImageFormat').value;
+    const iso = document.getElementById('inspIso').value;
+    const shutter = document.getElementById('inspShutterSpeed').value;
+
+    // Generate template.kml for Inspection
+    const templateKml = `<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:wpml="http://www.dji.com/wpmz/1.0.2">
+  <Document>
+    <wpml:author>DJI Flight Planner</wpml:author>
+    <wpml:createTime>${Date.now()}</wpml:createTime>
+    <wpml:updateTime>${Date.now()}</wpml:updateTime>
+    <wpml:missionConfig>
+      <wpml:flyToWayPointMode>safely</wpml:flyToWayPointMode>
+      <wpml:finishAction>goHome</wpml:finishAction>
+      <wpml:exitOnRCLost>executeLostAction</wpml:exitOnRCLost>
+      <wpml:executeRCLostAction>goHome</wpml:executeRCLostAction>
+      <wpml:takeOffSecurityHeight>20</wpml:takeOffSecurityHeight>
+      <wpml:globalTransitionalSpeed>5</wpml:globalTransitionalSpeed>
+      <wpml:droneInfo>
+        <wpml:droneModelKey>67</wpml:droneModelKey>
+        <wpml:droneEnumValue>67</wpml:droneEnumValue>
+      </wpml:droneInfo>
+    </wpml:missionConfig>
+    <Folder>
+      <wpml:templateType>waypoint</wpml:templateType>
+      <wpml:templateId>0</wpml:templateId>
+      <wpml:waylineInterpolateConfig>
+        <wpml:waylineInterpolateType>linear</wpml:waylineInterpolateType>
+      </wpml:waylineInterpolateConfig>
+      <wpml:autoFlightSpeed>3</wpml:autoFlightSpeed>
+      ${waypoints.map((wp, i) => `
+      <Placemark>
+        <Point>
+          <coordinates>${wp.lng},${wp.lat}</coordinates>
+        </Point>
+        <wpml:index>${i}</wpml:index>
+        <wpml:ellipsoidHeight>${wp.alt.toFixed(2)}</wpml:ellipsoidHeight>
+        <wpml:height>${wp.alt.toFixed(2)}</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>0</wpml:useGlobalHeadingMode>
+        <wpml:waypointHeading>${wp.heading.toFixed(1)}</wpml:waypointHeading>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>${wp.pitch}</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>${i}</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>${i}</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>${i}</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>${format}</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          ${iso !== 'AUTO' ? `
+          <wpml:action>
+            <wpml:actionId>2</wpml:actionId>
+            <wpml:actionType>cameraISO</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:iso>${iso}</wpml:iso>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>` : ''}
+          ${shutter !== 'AUTO' ? `
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>${shutter}</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>` : ''}
+        </wpml:actionGroup>
+      </Placemark>`).join('')}
+    </Folder>
+  </Document>
+</kml>`;
+
+    wpmz.file("template.kml", templateKml);
+    wpmz.file("waylines.wpml", templateKml);
+
+    const content = await zip.generateAsync({ type: "blob" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(content);
+    link.download = "inspection_mission.kmz";
+    link.click();
+};
+
+document.getElementById('generateInspBtn').onclick = generateInspectionPlan;
 
 async function searchLocation() {
     const query = document.getElementById('search-input').value;
@@ -223,6 +461,7 @@ function renderWaypoints(interval, height) {
                     <b>Lat:</b> ${wp.lat.toFixed(6)}<br>
                     <b>Lng:</b> ${wp.lng.toFixed(6)}<br>
                     <b>Alt (AMSL):</b> ${height}m<br>
+                    ${currentTab === 'inspection' ? `<b>Camera Pitch:</b> ${wp.pitch}°<br><b>Heading:</b> ${wp.heading.toFixed(1)}°` : ''}
                     ${triggerMode === 'precise' && wp.action === 'take_photo' ? `
                         <hr>
                         <b>Camera Settings:</b><br>
