@@ -224,23 +224,38 @@ document.getElementById('exportInspBtn').onclick = async () => {
     <wpml:createTime>${Date.now()}</wpml:createTime>
     <wpml:updateTime>${Date.now()}</wpml:updateTime>
     <wpml:missionConfig>
-      <wpml:flyToWayPointMode>safely</wpml:flyToWayPointMode>
+      <wpml:flyToWaylineMode>safely</wpml:flyToWaylineMode>
       <wpml:finishAction>goHome</wpml:finishAction>
       <wpml:exitOnRCLost>executeLostAction</wpml:exitOnRCLost>
       <wpml:executeRCLostAction>goHome</wpml:executeRCLostAction>
       <wpml:takeOffSecurityHeight>20</wpml:takeOffSecurityHeight>
       <wpml:globalTransitionalSpeed>5</wpml:globalTransitionalSpeed>
       <wpml:droneInfo>
-        <wpml:droneModelKey>67</wpml:droneModelKey>
-        <wpml:droneEnumValue>67</wpml:droneEnumValue>
+        <wpml:droneEnumValue>68</wpml:droneEnumValue>
+        <wpml:droneSubEnumValue>0</wpml:droneSubEnumValue>
+      </wpml:droneInfo>
+    </wpml:missionConfig>
+  </Document>
+</kml>`;
+
+    const waylinesWpml = `<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:wpml="http://www.dji.com/wpmz/1.0.2">
+  <Document>
+    <wpml:missionConfig>
+      <wpml:flyToWaylineMode>safely</wpml:flyToWaylineMode>
+      <wpml:finishAction>goHome</wpml:finishAction>
+      <wpml:exitOnRCLost>executeLostAction</wpml:exitOnRCLost>
+      <wpml:executeRCLostAction>goHome</wpml:executeRCLostAction>
+      <wpml:globalTransitionalSpeed>5</wpml:globalTransitionalSpeed>
+      <wpml:droneInfo>
+        <wpml:droneEnumValue>68</wpml:droneEnumValue>
+        <wpml:droneSubEnumValue>0</wpml:droneSubEnumValue>
       </wpml:droneInfo>
     </wpml:missionConfig>
     <Folder>
-      <wpml:templateType>waypoint</wpml:templateType>
       <wpml:templateId>0</wpml:templateId>
-      <wpml:waylineInterpolateConfig>
-        <wpml:waylineInterpolateType>linear</wpml:waylineInterpolateType>
-      </wpml:waylineInterpolateConfig>
+      <wpml:executeHeightMode>relativeToStartPoint</wpml:executeHeightMode>
+      <wpml:waylineId>0</wpml:waylineId>
       <wpml:autoFlightSpeed>3</wpml:autoFlightSpeed>
       ${waypoints.map((wp, i) => `
       <Placemark>
@@ -248,13 +263,18 @@ document.getElementById('exportInspBtn').onclick = async () => {
           <coordinates>${wp.lng},${wp.lat}</coordinates>
         </Point>
         <wpml:index>${i}</wpml:index>
-        <wpml:ellipsoidHeight>${wp.alt.toFixed(2)}</wpml:ellipsoidHeight>
-        <wpml:height>${wp.alt.toFixed(2)}</wpml:height>
-        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
-        <wpml:useGlobalHeadingMode>0</wpml:useGlobalHeadingMode>
-        <wpml:waypointHeading>${wp.heading.toFixed(1)}</wpml:waypointHeading>
-        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
-        <wpml:gimbalPitchAngle>${wp.pitch}</wpml:gimbalPitchAngle>
+        <wpml:executeHeight>${(wp.alt - terrainAlt).toFixed(2)}</wpml:executeHeight>
+        <wpml:waypointSpeed>3</wpml:waypointSpeed>
+        <wpml:waypointHeadingParam>
+          <wpml:waypointHeadingMode>smoothTransition</wpml:waypointHeadingMode>
+          <wpml:waypointHeadingAngle>${wp.heading.toFixed(1)}</wpml:waypointHeadingAngle>
+          <wpml:waypointHeadingAngleEnable>1</wpml:waypointHeadingAngleEnable>
+          <wpml:waypointHeadingPathMode>followBadArc</wpml:waypointHeadingPathMode>
+        </wpml:waypointHeadingParam>
+        <wpml:waypointTurnParam>
+          <wpml:waypointTurnMode>toPointAndStopWithContinuityCurvature</wpml:waypointTurnMode>
+          <wpml:waypointTurnDampingDist>0</wpml:waypointTurnDampingDist>
+        </wpml:waypointTurnParam>
         <wpml:actionGroup>
           <wpml:actionGroupId>${i}</wpml:actionGroupId>
           <wpml:actionGroupStartIndex>${i}</wpml:actionGroupStartIndex>
@@ -265,31 +285,19 @@ document.getElementById('exportInspBtn').onclick = async () => {
           </wpml:actionTrigger>
           <wpml:action>
             <wpml:actionId>0</wpml:actionId>
-            <wpml:actionType>takePhoto</wpml:actionType>
+            <wpml:actionActuatorFunc>gimbalRotate</wpml:actionActuatorFunc>
+            <wpml:actionActuatorFuncParam>
+              <wpml:gimbalHeadingYawBase>aircraft</wpml:gimbalHeadingYawBase>
+              <wpml:gimbalRotateMode>absoluteAngle</wpml:gimbalRotateMode>
+              <wpml:gimbalPitchRotateEnable>1</wpml:gimbalPitchRotateEnable>
+              <wpml:gimbalPitchRotateAngle>${wp.pitch}</wpml:gimbalPitchRotateAngle>
+              <wpml:payloadPositionIndex>0</wpml:payloadPositionIndex>
+            </wpml:actionActuatorFuncParam>
           </wpml:action>
           <wpml:action>
             <wpml:actionId>1</wpml:actionId>
-            <wpml:actionType>cameraFileFormat</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:fileFormat>${format}</wpml:fileFormat>
-            </wpml:actionActuatorFuncParam>
+            <wpml:actionActuatorFunc>takePhoto</wpml:actionActuatorFunc>
           </wpml:action>
-          ${iso !== 'AUTO' ? `
-          <wpml:action>
-            <wpml:actionId>2</wpml:actionId>
-            <wpml:actionType>cameraISO</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:iso>${iso}</wpml:iso>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>` : ''}
-          ${shutter !== 'AUTO' ? `
-          <wpml:action>
-            <wpml:actionId>3</wpml:actionId>
-            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:shutterSpeed>${shutter}</wpml:shutterSpeed>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>` : ''}
         </wpml:actionGroup>
       </Placemark>`).join('')}
     </Folder>
@@ -297,7 +305,7 @@ document.getElementById('exportInspBtn').onclick = async () => {
 </kml>`;
 
     wpmz.file("template.kml", templateKml);
-    wpmz.file("waylines.wpml", templateKml);
+    wpmz.file("waylines.wpml", waylinesWpml);
 
     const content = await zip.generateAsync({ type: "blob" });
     const link = document.createElement("a");
@@ -536,39 +544,60 @@ document.getElementById('exportBtn').onclick = async () => {
     <wpml:createTime>${Date.now()}</wpml:createTime>
     <wpml:updateTime>${Date.now()}</wpml:updateTime>
     <wpml:missionConfig>
-      <wpml:flyToWayPointMode>safely</wpml:flyToWayPointMode>
+      <wpml:flyToWaylineMode>safely</wpml:flyToWaylineMode>
       <wpml:finishAction>goHome</wpml:finishAction>
       <wpml:exitOnRCLost>executeLostAction</wpml:exitOnRCLost>
       <wpml:executeRCLostAction>goHome</wpml:executeRCLostAction>
       <wpml:takeOffSecurityHeight>20</wpml:takeOffSecurityHeight>
       <wpml:globalTransitionalSpeed>${speed}</wpml:globalTransitionalSpeed>
       <wpml:droneInfo>
-        <wpml:droneModelKey>67</wpml:droneModelKey>
-        <wpml:droneEnumValue>67</wpml:droneEnumValue>
+        <wpml:droneEnumValue>68</wpml:droneEnumValue>
+        <wpml:droneSubEnumValue>0</wpml:droneSubEnumValue>
+      </wpml:droneInfo>
+    </wpml:missionConfig>
+  </Document>
+</kml>`;
+
+    const waylinesWpml = `<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:wpml="http://www.dji.com/wpmz/1.0.2">
+  <Document>
+    <wpml:missionConfig>
+      <wpml:flyToWaylineMode>safely</wpml:flyToWaylineMode>
+      <wpml:finishAction>goHome</wpml:finishAction>
+      <wpml:exitOnRCLost>executeLostAction</wpml:exitOnRCLost>
+      <wpml:executeRCLostAction>goHome</wpml:executeRCLostAction>
+      <wpml:globalTransitionalSpeed>${speed}</wpml:globalTransitionalSpeed>
+      <wpml:droneInfo>
+        <wpml:droneEnumValue>68</wpml:droneEnumValue>
+        <wpml:droneSubEnumValue>0</wpml:droneSubEnumValue>
       </wpml:droneInfo>
     </wpml:missionConfig>
     <Folder>
-      <wpml:templateType>waypoint</wpml:templateType>
       <wpml:templateId>0</wpml:templateId>
-      <wpml:waylineInterpolateConfig>
-        <wpml:waylineInterpolateType>linear</wpml:waylineInterpolateType>
-      </wpml:waylineInterpolateConfig>
+      <wpml:executeHeightMode>relativeToStartPoint</wpml:executeHeightMode>
+      <wpml:waylineId>0</wpml:waylineId>
       <wpml:autoFlightSpeed>${speed}</wpml:autoFlightSpeed>
       ${waypoints.map((wp, i) => {
         const terrainAlt = terrainFollow ? (elevations[i] || 0) : 0;
-        const absoluteAlt = terrainAlt + height;
+        const relativeAlt = height; // Since we use relativeToStartPoint, height is the offset
         return `
       <Placemark>
         <Point>
           <coordinates>${wp.lng},${wp.lat}</coordinates>
         </Point>
         <wpml:index>${i}</wpml:index>
-        <wpml:ellipsoidHeight>${absoluteAlt.toFixed(2)}</wpml:ellipsoidHeight>
-        <wpml:height>${absoluteAlt.toFixed(2)}</wpml:height>
-        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
-        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
-        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
-        <wpml:gimbalPitchAngle>${triggerMode === 'precise' ? gimbalOverride : cameraAngle}</wpml:gimbalPitchAngle>
+        <wpml:executeHeight>${relativeAlt.toFixed(2)}</wpml:executeHeight>
+        <wpml:waypointSpeed>${speed}</wpml:waypointSpeed>
+        <wpml:waypointHeadingParam>
+          <wpml:waypointHeadingMode>followWayline</wpml:waypointHeadingMode>
+          <wpml:waypointHeadingAngle>0</wpml:waypointHeadingAngle>
+          <wpml:waypointHeadingAngleEnable>0</wpml:waypointHeadingAngleEnable>
+          <wpml:waypointHeadingPathMode>followBadArc</wpml:waypointHeadingPathMode>
+        </wpml:waypointHeadingParam>
+        <wpml:waypointTurnParam>
+          <wpml:waypointTurnMode>toPointAndStopWithContinuityCurvature</wpml:waypointTurnMode>
+          <wpml:waypointTurnDampingDist>0</wpml:waypointTurnDampingDist>
+        </wpml:waypointTurnParam>
         <wpml:actionGroup>
           <wpml:actionGroupId>${i}</wpml:actionGroupId>
           <wpml:actionGroupStartIndex>${i}</wpml:actionGroupStartIndex>
@@ -577,65 +606,22 @@ document.getElementById('exportBtn').onclick = async () => {
           <wpml:actionTrigger>
             <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
           </wpml:actionTrigger>
-          ${i === 0 && triggerMode === 'precise' ? `
-          <wpml:action>
-            <wpml:actionId>10</wpml:actionId>
-            <wpml:actionType>cameraFocusMode</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:focusMode>${focusMode === 'AUTO' ? 'auto' : 'manual'}</wpml:focusMode>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>
-          ${focusMode === 'INFINITY' ? `
-          <wpml:action>
-            <wpml:actionId>11</wpml:actionId>
-            <wpml:actionType>cameraFocusTarget</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:focusTarget>1.0</wpml:focusTarget>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>` : focusMode === 'NEAR' ? `
-          <wpml:action>
-            <wpml:actionId>11</wpml:actionId>
-            <wpml:actionType>cameraFocusTarget</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:focusTarget>0.0</wpml:focusTarget>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>` : ''}` : ''}
-          ${wp.action === 'take_photo' ? `
           <wpml:action>
             <wpml:actionId>0</wpml:actionId>
-            <wpml:actionType>takePhoto</wpml:actionType>
+            <wpml:actionActuatorFunc>gimbalRotate</wpml:actionActuatorFunc>
+            <wpml:actionActuatorFuncParam>
+              <wpml:gimbalHeadingYawBase>aircraft</wpml:gimbalHeadingYawBase>
+              <wpml:gimbalRotateMode>absoluteAngle</wpml:gimbalRotateMode>
+              <wpml:gimbalPitchRotateEnable>1</wpml:gimbalPitchRotateEnable>
+              <wpml:gimbalPitchRotateAngle>${triggerMode === 'precise' ? gimbalOverride : cameraAngle}</wpml:gimbalPitchRotateAngle>
+              <wpml:payloadPositionIndex>0</wpml:payloadPositionIndex>
+            </wpml:actionActuatorFuncParam>
           </wpml:action>
+          ${wp.action === 'take_photo' ? `
           <wpml:action>
             <wpml:actionId>1</wpml:actionId>
-            <wpml:actionType>cameraFileFormat</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:fileFormat>${format}</wpml:fileFormat>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>
-          ${iso !== 'AUTO' ? `
-          <wpml:action>
-            <wpml:actionId>2</wpml:actionId>
-            <wpml:actionType>cameraISO</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:iso>${iso}</wpml:iso>
-            </wpml:actionActuatorFuncParam>
+            <wpml:actionActuatorFunc>takePhoto</wpml:actionActuatorFunc>
           </wpml:action>` : ''}
-          ${shutter !== 'AUTO' ? `
-          <wpml:action>
-            <wpml:actionId>3</wpml:actionId>
-            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:shutterSpeed>${shutter}</wpml:shutterSpeed>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>` : ''}
-          ${wb !== 'AUTO' ? `
-          <wpml:action>
-            <wpml:actionId(4)</wpml:actionId>
-            <wpml:actionType>cameraWhiteBalance</wpml:actionType>
-            <wpml:actionActuatorFuncParam>
-              <wpml:whiteBalance>${wb}</wpml:whiteBalance>
-            </wpml:actionActuatorFuncParam>
-          </wpml:action>` : ''}` : ''}
         </wpml:actionGroup>
       </Placemark>`;
       }).join('')}
@@ -644,7 +630,7 @@ document.getElementById('exportBtn').onclick = async () => {
 </kml>`;
 
     wpmz.file("template.kml", templateKml);
-    wpmz.file("waylines.wpml", templateKml); // For simplicity, DJI Pilot 2 often uses the same for both
+    wpmz.file("waylines.wpml", waylinesWpml);
 
     const content = await zip.generateAsync({ type: "blob" });
     const link = document.createElement("a");
