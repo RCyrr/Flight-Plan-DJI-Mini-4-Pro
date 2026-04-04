@@ -1,0 +1,3696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:wpml="http://www.dji.com/wpmz/1.0.2">
+  <Document>
+    <wpml:author>DJI Flight Planner</wpml:author>
+    <wpml:createTime>1775263097680</wpml:createTime>
+    <wpml:updateTime>1775263097680</wpml:updateTime>
+    <wpml:missionConfig>
+      <wpml:flyToWayPointMode>safely</wpml:flyToWayPointMode>
+      <wpml:finishAction>goHome</wpml:finishAction>
+      <wpml:exitOnRCLost>executeLostAction</wpml:exitOnRCLost>
+      <wpml:executeRCLostAction>goHome</wpml:executeRCLostAction>
+      <wpml:takeOffSecurityHeight>20</wpml:takeOffSecurityHeight>
+      <wpml:globalTransitionalSpeed>3</wpml:globalTransitionalSpeed>
+      <wpml:droneInfo>
+        <wpml:droneModelKey>67</wpml:droneModelKey>
+        <wpml:droneEnumValue>67</wpml:droneEnumValue>
+      </wpml:droneInfo>
+    </wpml:missionConfig>
+    <Folder>
+      <wpml:templateType>waypoint</wpml:templateType>
+      <wpml:templateId>0</wpml:templateId>
+      <wpml:waylineInterpolateConfig>
+        <wpml:waylineInterpolateType>linear</wpml:waylineInterpolateType>
+      </wpml:waylineInterpolateConfig>
+      <wpml:autoFlightSpeed>3</wpml:autoFlightSpeed>
+      
+      <Placemark>
+        <Point>
+          <coordinates>9.28028473604661,48.951934984226284</coordinates>
+        </Point>
+        <wpml:index>0</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>0</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>0</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>0</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          <wpml:action>
+            <wpml:actionId>10</wpml:actionId>
+            <wpml:actionType>cameraFocusMode</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:focusMode>manual</wpml:focusMode>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          <wpml:action>
+            <wpml:actionId>11</wpml:actionId>
+            <wpml:actionType>cameraFocusTarget</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:focusTarget>1.0</wpml:focusTarget>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280333260821067,48.95194658241661</coordinates>
+        </Point>
+        <wpml:index>1</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>1</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>1</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>1</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280381785606892,48.95195818060694</coordinates>
+        </Point>
+        <wpml:index>2</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>2</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>2</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>2</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280430310404086,48.95196977879727</coordinates>
+        </Point>
+        <wpml:index>3</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>3</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>3</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>3</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28047883521242,48.9519813769876</coordinates>
+        </Point>
+        <wpml:index>4</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>4</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>4</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>4</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280527360032124,48.951992975177916</coordinates>
+        </Point>
+        <wpml:index>5</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>5</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>5</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>5</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280575884863083,48.95200457336825</coordinates>
+        </Point>
+        <wpml:index>6</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>6</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>6</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>6</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280624409705297,48.95201617155858</coordinates>
+        </Point>
+        <wpml:index>7</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>7</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>7</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>7</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28067293455888,48.95202776974891</coordinates>
+        </Point>
+        <wpml:index>8</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>8</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>8</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>8</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280721459423717,48.952039367939236</coordinates>
+        </Point>
+        <wpml:index>9</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>9</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>9</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>9</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280769984299809,48.95205096612957</coordinates>
+        </Point>
+        <wpml:index>10</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>10</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>10</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>10</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280818509187156,48.952062564319895</coordinates>
+        </Point>
+        <wpml:index>11</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>11</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>11</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>11</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280867034085759,48.95207416251023</coordinates>
+        </Point>
+        <wpml:index>12</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>12</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>12</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>12</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28091555899573,48.952085760700555</coordinates>
+        </Point>
+        <wpml:index>13</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>13</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>13</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>13</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280964083916956,48.95209735889088</coordinates>
+        </Point>
+        <wpml:index>14</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>14</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>14</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>14</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281012608849323,48.95210895708121</coordinates>
+        </Point>
+        <wpml:index>15</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>15</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>15</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>15</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281061133793173,48.952120555271534</coordinates>
+        </Point>
+        <wpml:index>16</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>16</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>16</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>16</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281109658748278,48.95213215346187</coordinates>
+        </Point>
+        <wpml:index>17</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>17</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>17</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>17</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281158183714524,48.952143751652194</coordinates>
+        </Point>
+        <wpml:index>18</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>18</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>18</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>18</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281206708692253,48.95215534984253</coordinates>
+        </Point>
+        <wpml:index>19</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>19</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>19</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>19</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281255233681236,48.95216694803286</coordinates>
+        </Point>
+        <wpml:index>20</wpml:index>
+        <wpml:ellipsoidHeight>313.00</wpml:ellipsoidHeight>
+        <wpml:height>313.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>20</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>20</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>20</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281195700908256,48.95229484409372</coordinates>
+        </Point>
+        <wpml:index>21</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>21</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>21</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>21</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281147816007774,48.95228339890706</coordinates>
+        </Point>
+        <wpml:index>22</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>22</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>22</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>22</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281099931118547,48.952271953720405</coordinates>
+        </Point>
+        <wpml:index>23</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>23</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>23</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>23</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281052046240006,48.952260508533755</coordinates>
+        </Point>
+        <wpml:index>24</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>24</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>24</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>24</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281004161372493,48.952249063347104</coordinates>
+        </Point>
+        <wpml:index>25</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>25</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>25</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>25</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280956276516008,48.952237618160446</coordinates>
+        </Point>
+        <wpml:index>26</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>26</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>26</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>26</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280908391670323,48.952226172973795</coordinates>
+        </Point>
+        <wpml:index>27</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>27</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>27</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>27</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280860506835893,48.95221472778714</coordinates>
+        </Point>
+        <wpml:index>28</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>28</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>28</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>28</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280812622012945,48.95220328260048</coordinates>
+        </Point>
+        <wpml:index>29</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>29</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>29</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>29</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28076473720023,48.95219183741383</coordinates>
+        </Point>
+        <wpml:index>30</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>30</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>30</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>30</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280716852398655,48.95218039222718</coordinates>
+        </Point>
+        <wpml:index>31</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>31</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>31</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>31</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280668967608108,48.95216894704051</coordinates>
+        </Point>
+        <wpml:index>32</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>32</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>32</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>32</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280621082828475,48.95215750185387</coordinates>
+        </Point>
+        <wpml:index>33</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>33</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>33</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>33</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28057319805987,48.95214605666721</coordinates>
+        </Point>
+        <wpml:index>34</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>34</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>34</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>34</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280525313302292,48.95213461148055</coordinates>
+        </Point>
+        <wpml:index>35</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>35</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>35</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>35</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280477428555741,48.9521231662939</coordinates>
+        </Point>
+        <wpml:index>36</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>36</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>36</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>36</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280429543820105,48.95211172110725</coordinates>
+        </Point>
+        <wpml:index>37</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>37</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>37</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>37</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280381659095383,48.952100275920586</coordinates>
+        </Point>
+        <wpml:index>38</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>38</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>38</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>38</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280333774381802,48.95208883073394</coordinates>
+        </Point>
+        <wpml:index>39</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>39</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>39</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>39</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280285889679021,48.952077385547284</coordinates>
+        </Point>
+        <wpml:index>40</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>40</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>40</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>40</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280238004987382,48.952065940360626</coordinates>
+        </Point>
+        <wpml:index>41</wpml:index>
+        <wpml:ellipsoidHeight>319.00</wpml:ellipsoidHeight>
+        <wpml:height>319.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>41</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>41</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>41</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28019127374364,48.9521968964803</coordinates>
+        </Point>
+        <wpml:index>42</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>42</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>42</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>42</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280238518352803,48.9522081886637</coordinates>
+        </Point>
+        <wpml:index>43</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>43</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>43</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>43</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280285762974245,48.95221948084709</coordinates>
+        </Point>
+        <wpml:index>44</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>44</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>44</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>44</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280333007604213,48.95223077303049</coordinates>
+        </Point>
+        <wpml:index>45</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>45</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>45</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>45</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280380252244754,48.95224206521389</coordinates>
+        </Point>
+        <wpml:index>46</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>46</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>46</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>46</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280427496896436,48.95225335739729</coordinates>
+        </Point>
+        <wpml:index>47</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>47</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>47</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>47</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280474741558805,48.952264649580684</coordinates>
+        </Point>
+        <wpml:index>48</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>48</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>48</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>48</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280521986231975,48.952275941764086</coordinates>
+        </Point>
+        <wpml:index>49</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>49</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>49</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>49</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280569230915944,48.95228723394748</coordinates>
+        </Point>
+        <wpml:index>50</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>50</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>50</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>50</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280616475610486,48.952298526130875</coordinates>
+        </Point>
+        <wpml:index>51</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>51</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>51</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>51</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280663720315715,48.952309818314276</coordinates>
+        </Point>
+        <wpml:index>52</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>52</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>52</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>52</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28071096503163,48.95232111049768</coordinates>
+        </Point>
+        <wpml:index>53</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>53</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>53</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>53</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280758209758346,48.95233240268107</coordinates>
+        </Point>
+        <wpml:index>54</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>54</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>54</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>54</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280805454495635,48.95234369486447</coordinates>
+        </Point>
+        <wpml:index>55</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>55</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>55</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>55</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280852699243724,48.95235498704786</coordinates>
+        </Point>
+        <wpml:index>56</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>56</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>56</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>56</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280899944002499,48.95236627923126</coordinates>
+        </Point>
+        <wpml:index>57</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>57</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>57</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>57</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280947188771847,48.952377571414665</coordinates>
+        </Point>
+        <wpml:index>58</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>58</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>58</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>58</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280994433551996,48.95238886359806</coordinates>
+        </Point>
+        <wpml:index>59</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>59</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>59</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>59</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281041678342831,48.952400155781454</coordinates>
+        </Point>
+        <wpml:index>60</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>60</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>60</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>60</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281088923144353,48.95241144796485</coordinates>
+        </Point>
+        <wpml:index>61</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>61</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>61</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>61</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28113616795656,48.95242274014826</coordinates>
+        </Point>
+        <wpml:index>62</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>62</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>62</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>62</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281076634825126,48.952550636196314</coordinates>
+        </Point>
+        <wpml:index>63</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>63</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>63</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>63</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.281027577220925,48.952538910743115</coordinates>
+        </Point>
+        <wpml:index>64</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>64</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>64</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>64</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28097851962832,48.95252718528991</coordinates>
+        </Point>
+        <wpml:index>65</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>65</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>65</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>65</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280929462047197,48.9525154598367</coordinates>
+        </Point>
+        <wpml:index>66</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>66</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>66</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>66</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280880404477557,48.95250373438349</coordinates>
+        </Point>
+        <wpml:index>67</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>67</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>67</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>67</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280831346919513,48.95249200893029</coordinates>
+        </Point>
+        <wpml:index>68</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>68</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>68</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>68</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280782289373064,48.95248028347708</coordinates>
+        </Point>
+        <wpml:index>69</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>69</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>69</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>69</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280733231838099,48.952468558023874</coordinates>
+        </Point>
+        <wpml:index>70</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>70</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>70</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>70</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280684174314615,48.95245683257067</coordinates>
+        </Point>
+        <wpml:index>71</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>71</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>71</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>71</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280635116802614,48.95244510711747</coordinates>
+        </Point>
+        <wpml:index>72</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>72</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>72</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>72</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280586059302209,48.952433381664264</coordinates>
+        </Point>
+        <wpml:index>73</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>73</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>73</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>73</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.2805370018134,48.95242165621106</coordinates>
+        </Point>
+        <wpml:index>74</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>74</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>74</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>74</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280487944336073,48.95240993075785</coordinates>
+        </Point>
+        <wpml:index>75</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>75</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>75</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>75</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280438886870229,48.95239820530465</coordinates>
+        </Point>
+        <wpml:index>76</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>76</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>76</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>76</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.28038982941598,48.95238647985144</coordinates>
+        </Point>
+        <wpml:index>77</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>77</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>77</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>77</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280340771973215,48.952374754398235</coordinates>
+        </Point>
+        <wpml:index>78</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>78</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>78</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>78</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280291714542045,48.95236302894502</coordinates>
+        </Point>
+        <wpml:index>79</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>79</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>79</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>79</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280242657122244,48.95235130349182</coordinates>
+        </Point>
+        <wpml:index>80</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>80</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>80</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>80</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280193599714153,48.95233957803862</coordinates>
+        </Point>
+        <wpml:index>81</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>81</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>81</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>81</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+      <Placemark>
+        <Point>
+          <coordinates>9.280144542317544,48.95232785258541</coordinates>
+        </Point>
+        <wpml:index>82</wpml:index>
+        <wpml:ellipsoidHeight>312.00</wpml:ellipsoidHeight>
+        <wpml:height>312.00</wpml:height>
+        <wpml:useGlobalTransitionalSpeed>1</wpml:useGlobalTransitionalSpeed>
+        <wpml:useGlobalHeadingMode>1</wpml:useGlobalHeadingMode>
+        <wpml:useGlobalTurnMode>1</wpml:useGlobalTurnMode>
+        <wpml:gimbalPitchAngle>-80</wpml:gimbalPitchAngle>
+        <wpml:actionGroup>
+          <wpml:actionGroupId>82</wpml:actionGroupId>
+          <wpml:actionGroupStartIndex>82</wpml:actionGroupStartIndex>
+          <wpml:actionGroupEndIndex>82</wpml:actionGroupEndIndex>
+          <wpml:actionGroupMode>sequence</wpml:actionGroupMode>
+          <wpml:actionTrigger>
+            <wpml:actionTriggerType>reachPoint</wpml:actionTriggerType>
+          </wpml:actionTrigger>
+          
+          
+          <wpml:action>
+            <wpml:actionId>0</wpml:actionId>
+            <wpml:actionType>takePhoto</wpml:actionType>
+          </wpml:action>
+          <wpml:action>
+            <wpml:actionId>1</wpml:actionId>
+            <wpml:actionType>cameraFileFormat</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:fileFormat>JPEG</wpml:fileFormat>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+          
+          <wpml:action>
+            <wpml:actionId>3</wpml:actionId>
+            <wpml:actionType>cameraShutterSpeed</wpml:actionType>
+            <wpml:actionActuatorFuncParam>
+              <wpml:shutterSpeed>1/1000</wpml:shutterSpeed>
+            </wpml:actionActuatorFuncParam>
+          </wpml:action>
+          
+        </wpml:actionGroup>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
