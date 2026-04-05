@@ -13,25 +13,28 @@ A single-page application (SPA) built with HTML5, CSS3, and JavaScript. No backe
 
 ## 3. Core Components
 ### 3.1. Map Interface (`index.html`)
-- Dual-sidebar layout:
-    - **Left Sidebar**: Flight parameters (Height, Overlap, Speed, Direction, Camera).
-    - **Right Sidebar**: Waypoint details (Index, Action, Coordinates, Altitude, Camera Settings).
-- **Search Bar**: Nominatim-based location search.
+- **Modern Overlay Layout**:
+    - **Top Navigation Bar**: "Create Flight" menu, Location Search, Map Layer Toggle (OSM, Satellite, Topo, Esri Topo), and Global Camera Settings.
+    - **Left Sidebar (Overlay)**: Dynamic flight parameters (GSD, Height, Speed, Overlap, Direction, Gimbal).
+    - **Right Sidebar (Resizable/Toggleable)**: 
+        - **Project Details**: Real-time Area calculation (Turf.js), Waypoint counter (200 limit), and Terrain Analysis (Min/Max).
+        - **Waypoint Details**: Interactive metadata for selected points (Lat/Lng, AGL/AMSL Height, Camera Actions).
 
 ### 3.2. Grid Generation Logic (`app.js`)
-- **`updateFlightPlan`**: Orchestrates the calculation of GSD, strip spacing, and photo interval.
+- **Bidirectional GSD/Height**: Real-time recalculation of Height based on GSD and vice versa using DJI Mini 4 Pro sensor specs.
+- **Capture Interval Calculator**: Dynamic interval calculation with color-coded warnings (Red < 3s, Orange 3-5s, Green > 5s).
 - **`generateGrid`**: 
-    1. Rotates the user-drawn polygon by the negative flight direction.
-    2. Generates horizontal strips within the rotated bounding box.
-    3. Clips strips to the polygon and adds waypoints (Precise or Optimized).
-    4. Rotates waypoints back to the original orientation.
-- **`renderWaypoints`**: Visualizes waypoints as clickable markers with popups and updates the right panel.
+    1. Rotates the user-drawn polygon.
+    2. Generates horizontal strips.
+    3. **Precise Mode**: Generates individual waypoints for every photo trigger point.
+    4. **Optimized Mode**: Minimizes waypoints using timed shots.
+- **Terrain Analysis**: Generates a 25x25 internal grid to determine project elevation range.
 
 ### 3.3. KMZ Export/Import (`app.js`)
-- **`exportBtn.onclick`**: 
-    1. Fetches elevation data for all waypoints.
-    2. Generates `template.kml` and `waylines.wpml` using DJI WPML V2/V3 schema.
-    3. Bundles into a `.kmz` file for download.
+- **Intelligent Elevation Logic**: 
+    1. Fetches terrain data in stable batches of 40 points.
+    2. **Threshold Check**: Compares terrain variation against a user-defined threshold (default 10%).
+    3. **Conditional Mode**: Automatically uses `relativeToStartPoint` for flat terrain and offers `absolute` (AMSL) for significant variations.
 - **`importFile.onchange`**: 
     1. Unzips the KMZ and parses the XML.
     2. Extracts coordinates and altitudes to populate the map and UI.

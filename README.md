@@ -4,14 +4,12 @@
 Drone Planner is a browser-based application for creating and managing drone flight plans. It allows users to design flight patterns by drawing polygons on a map, calculate optimal flight strips with proper overlap, and export the results in several formats including KML with elevation information.
 
 ## Key Features
-- Drone model selection with automatic parameter configuration
-- Polygon drawing/import for defining flight areas
-- Automatic flight strip calculation with configurable parameters
-- Photo point generation with overlap configuration
-- Elevation data integration from Open Elevation API
-- Export options (CSV, JSON, KML with elevation)
-- Photo point filtering for streamlined missions
-- Multilingual UI (English/German)
+- **Modern UI**: Clean, professional interface with overlay sidebars and resizable panels.
+- **Intelligent Terrain Follow**: Automatic terrain analysis with a 25x25 grid and smart switching between relative and absolute altitudes based on a configurable threshold.
+- **Real-time Calculators**: Bidirectional GSD/Height calculation and color-coded Capture Interval warnings.
+- **Advanced Mapping**: Support for "Precise" (Waypoint per Photo) and "Optimized" trigger modes.
+- **Multiple Map Layers**: Toggle between OSM, Satellite, OpenTopoMap, and Esri World Topo.
+- **DJI Mini 4 Pro Optimized**: Tailored for the 200-waypoint limit and specific sensor specifications.
 
 ## Tech Stack
 - HTML/CSS (single-file app)
