@@ -199,6 +199,175 @@ Usability
 
 No DJI account required
 
+---
+
+## Appendix: Technical Implementation Notes
+
+### A. Polygon Drawing & Editing Workflow (April 2026)
+
+#### User Interface
+- **DRAW Button**: Activates Leaflet.draw polygon tool; user clicks map to add vertices.
+- **EDIT Button**: Activates EditToolbar on existing polygon; users drag vertices to reshape.
+- **DELETE LAST Button**: Removes most recent vertex during active drawing.
+- **DONE Button**: Finalizes current drawing/editing session and regenerates flight plan.
+- **CANCEL Button**: Aborts active drawing/editing without saving changes.
+- **DELETE Button**: Removes entire polygon and all waypoints/flight paths.
+
+#### Technical Implementation
+- **Handler Management**: Uses `L.Draw.Polygon` for drawing and `L.EditToolbar.Edit` for editing.
+- **Live-Preview During Edit** (Polling):
+  - 200ms interval timer checks for vertex coordinate changes via JSON hash.
+  - If coordinates changed, waypoints regenerate automatically.
+  - Terrain analysis intentionally skipped during preview (re-enabled after DONE).
+  - Performance optimization: Avoids API rate-limiting during rapid vertex dragging.
+  
+- **State Transitions**:
+  ```
+  Normal State → DRAW Button → Drawing Mode
+                     ↓
+                  DONE/Cancel → Finalize Polygon (Normal State)
+  
+  Normal State → EDIT Button → Editing Mode (live-preview active)
+                     ↓
+                  DONE Button → Finalize (restore blue color, enable terrain)
+                  CANCEL Button → Revert changes (Normal State)
+  ```
+
+#### Code Safety Checks
+1. **Single Definition Rule**: Each function defined exactly ONCE to prevent overwrites.
+2. **Centralized Button State**: `updateDrawButtons(isDrawing, isEditing)` manages all button disabled states.
+3. **Handler Nullification**: After disabling, handlers set to `null` to prevent dangling references.
+4. **Polling Cleanup**: `editCheckInterval` cleared before each new draw/edit session.
+
+### B. Flight Direction & Grid Orientation (April 2026)
+
+#### Compass System
+- **DJI Compass**: 0° = North, 90° = East, 180° = South, 270° = West
+- **User Input**: Flight Direction parameter (0-359°) uses DJI compass convention
+- **Strip Orientation**: Strips run **PERPENDICULAR** to flight direction
+
+#### Grid Generation Formula
+```javascript
+// User sets: direction = 0° (wants to fly North)
+// Grid should run East-West so camera captures side overlap (perpendicular to flight)
+
+gridRunAngle = (direction + 90) % 360
+// For direction = 0°: gridRunAngle = 90° (strips run East-West) ✓
+// For direction = 90°: gridRunAngle = 180° (strips run North-South) ✓
+```
+
+#### Heading Export Correction
+- **Web Coordinate System**: 0° = East (standard web math)
+- **DJI Compass System**: 0° = North (aviation standard, used by DJI)
+- **Conversion**: Add 90° and normalize to 0-360°
+```javascript
+heading = (gridRunAngle + 90) % 360
+// Converts waypoint heading from grid orientation to DJI compass
+// Exported KML uses correct heading for drone orientation
+```
+
+#### Example Scenarios
+| User Input | Grid Runs | Waypoint Heading | Drone Behavior |
+|-----------|-----------|------------------|----------------|
+| Direction=0° (North flight) | East-West | 0° (North heading) | Flies North, camera captures East-West overlap |
+| Direction=90° (East flight) | North-South | 90° (East heading) | Flies East, camera captures North-South overlap |
+| Direction=45° (NE flight) | NW-SE strips | 45° (NE heading) | Flies NE, camera captures NW-SE overlap |
+
+### C. Terrain Analysis Optimization
+
+#### API Batching
+- Waypoints queried in groups of 40 points per API request
+- 300ms throttle between requests to avoid rate-limiting
+- During live-edit preview: terrain API disabled (`isEditingForPreview = true`)
+- After DONE button: terrain analysis re-enabled and executed
+
+#### Threshold Logic
+```javascript
+// User configurable threshold (default = 10%)
+threshold = 10 // percent
+
+// Calculate terrain variation
+minElev = 234m, maxElev = 248m
+variation = (248 - 234) / 234 * 100 = 5.98%
+
+if (variation < threshold) {
+  altitudeMode = 'relativeToStartPoint' // Flat terrain
+} else {
+  altitudeMode = 'absolute' // Hilly terrain, use AMSL
+}
+```
+
+### D. Known Issues & Fixes (April 2026)
+
+#### Issue 1: Flight Strips Oriented Wrong
+- **Symptom**: Direction=0° produces East-West strips instead of North-South
+- **Root Cause**: Direction passed directly to grid generator instead of perpendicular angle
+- **Fix**: Apply `(direction + 90) % 360` before grid generation
+- **Lesson**: Flight direction ≠ strip orientation; document perpendicular relationship
+
+#### Issue 2: Duplicate Function Definitions
+- **Symptom**: DONE button doesn't update button states; DELETE button never enables
+- **Root Cause**: Old incomplete function definitions at line 440+ overwrite correct versions at line 208+
+- **Fix**: Grep for all `function functionName` matches; delete all duplicates
+- **Prevention**: Add warning comment in code; grep before each edit
+
+#### Issue 3: Compass Heading 90° Off
+- **Symptom**: Exported waypoints show heading pointing wrong direction
+- **Root Cause**: Web compass (0°=East) not converted to DJI compass (0°=North)
+- **Fix**: Add +90° offset: `heading = (angle + 90) % 360`
+- **Lesson**: Always clarify and document assumption about coordinate systems
+
+#### Issue 4: Orphaned Code After Incomplete Deletion
+- **Symptom**: "Uncaught SyntaxError: Unexpected token '}'" after function deletion
+- **Root Cause**: Related code left behind (e.g., `updateDrawButtons(true);` without parent function)
+- **Fix**: Use multi-line exact match replacement; verify context lines match exactly
+- **Prevention**: Always view surrounding lines before/after deletion
+
+### E. Testing Recommendations
+
+#### Drawing Workflow Test
+```
+1. Click DRAW
+2. Click map 4-5 times to add vertices
+3. Click DONE (or double-click to finish)
+4. Verify: Blue polygon appears; buttons reset to initial state
+```
+
+#### Editing Workflow Test
+```
+1. Click EDIT
+2. Drag a vertex slowly around the map
+3. Observe: Waypoints update every 200ms without API calls
+4. Click DONE
+5. Verify: Polygon remains blue; terrain analysis kicks in; button states update
+```
+
+#### Flight Direction Test
+```
+1. Set Direction = 0° (North)
+2. Click GENERATE FLIGHT PLAN
+3. Verify: Waypoints form East-West strips (perpendicular to North flight)
+4. Change Direction = 90° (East)
+5. Click GENERATE FLIGHT PLAN
+6. Verify: Waypoints form North-South strips (perpendicular to East flight)
+7. Export KMZ; open and verify heading values match compass orientation
+```
+
+#### Compass Conversion Test
+```
+1. Generate waypoints with Direction = 0°
+2. Console: log(`wp.heading = ${wp.heading}`)
+3. Verify: heading ≈ 90° (East direction for East-West strips)
+4. Export KMZ and inspect <wpml:waypointHeadingAngle> values
+5. Verify: Values are used as-is by DJI without further conversion
+```
+
+---
+
+**Document Version**: 1.1  
+**Last Updated**: 2026-04-07  
+**Status**: Implementation Complete & Tested
+
 No drone connection required
 
 Desktop mouse-first UI

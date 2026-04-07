@@ -18,17 +18,405 @@ const SENSOR_HEIGHT = IMAGE_HEIGHT * PIXEL_SIZE; // mm
 
 const DJI_INTERVALS = [2, 3, 5, 7, 10, 15, 20, 30, 60];
 
-let map, drawnItems, polygonLayer, centerMarker;
+// Polyfill for deprecated Leaflet API
+if (!L.LineUtil.isFlat) {
+    L.LineUtil.isFlat = function(latlngs) {
+        return !Array.isArray(latlngs[0]) || 
+               (typeof latlngs[0][0] !== 'object');
+    };
+}
+
+let map, drawnItems, polygonLayer, centerMarker, activeDrawHandler;
 let osmLayer, satelliteLayer, topoLayer, esriTopoLayer;
 let flightLines = [];
 let waypoints = [];
 let currentTab = 'mapping';
 
+// Edit mode state tracking
+let polygonEditHandler = null;
+let editCheckInterval = null;
+let lastEditCoords = null;
+let isEditingForPreview = false; // Skip terrain analysis during live edits
+
 // UI State Management
+function headerCreateFlight() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.display = 'flex';
+    showModeSelection();
+}
+
+// Polygon Drawing Logic
+function startPolygonDraw() {
+    if (activeDrawHandler) activeDrawHandler.disable();
+    
+    activeDrawHandler = new L.Draw.Polygon(map, {
+        shapeOptions: {
+            color: '#3498db',
+            fillOpacity: 0.2
+        }
+    });
+    activeDrawHandler.enable();
+    
+    updateDrawButtons(true);
+}
+
+function startPolygonEdit() {
+    Debug.log('Draw', '=== EDIT MODE START ===');
+    Debug.log('Draw', 'startPolygonEdit called');
+    
+    if (!polygonLayer) {
+        Debug.error('Draw', 'Cannot edit: polygonLayer is null');
+        return;
+    }
+    
+    // Disable any existing handler first
+    if (polygonEditHandler) {
+        Debug.log('Draw', 'Disabling existing polygonEditHandler');
+        try {
+            polygonEditHandler.disable();
+        } catch (e) {
+            Debug.error('Draw', 'Error disabling old handler', e);
+        }
+        polygonEditHandler = null;
+    }
+    
+    if (activeDrawHandler) {
+        Debug.log('Draw', 'Disabling existing activeDrawHandler');
+        try {
+            activeDrawHandler.disable();
+        } catch (e) {
+            Debug.error('Draw', 'Error disabling draw handler', e);
+        }
+        activeDrawHandler = null;
+    }
+    
+    // Get current coordinates
+    let coords = polygonLayer.getLatLngs();
+    Debug.log('Draw', `Raw coords length: ${coords.length}, structure:`, coords);
+    
+    // Analyze the nested structure
+    if (coords.length > 0) {
+        Debug.log('Draw', `coords[0] type: ${typeof coords[0]}, is array: ${Array.isArray(coords[0])}`);
+        if (Array.isArray(coords[0])) {
+            Debug.log('Draw', `coords[0].length: ${coords[0].length}`);
+            if (coords[0].length > 0) {
+                Debug.log('Draw', `coords[0][0]: ${JSON.stringify(coords[0][0])}`);
+            }
+        }
+    }
+    
+    // Handle nested coordinate structure
+    if (Array.isArray(coords[0]) && Array.isArray(coords[0][0])) {
+        Debug.log('Draw', '⚠️ Multi-polygon detected (nested arrays), using coords[0][0]');
+        coords = coords[0][0];
+    } else if (Array.isArray(coords[0]) && coords[0][0] && typeof coords[0][0].lat === 'number') {
+        Debug.log('Draw', '⚠️ Multi-ring polygon detected, using coords[0]');
+        coords = coords[0];
+    } else {
+        Debug.log('Draw', '✓ Simple polygon detected, using coords as-is');
+    }
+    
+    // Final validation
+    Debug.log('Draw', `Final coords to use - length: ${coords.length}, type: ${typeof coords}`);
+    if (!Array.isArray(coords)) {
+        Debug.error('Draw', 'ERROR: Final coords is not an array!', typeof coords);
+        return;
+    }
+    if (coords.length < 3) {
+        Debug.error('Draw', `ERROR: Not enough points (${coords.length} < 3)`);
+        return;
+    }
+    
+    // Validate coordinate format
+    const firstCoord = coords[0];
+    Debug.log('Draw', `First coordinate: ${JSON.stringify(firstCoord)}`);
+    if (!firstCoord.lat || !firstCoord.lng) {
+        Debug.error('Draw', 'ERROR: Coordinates missing lat/lng properties', firstCoord);
+        return;
+    }
+    
+    try {
+        // Update polygon with normalized coordinates
+        const oldCoords = JSON.stringify(polygonLayer.getLatLngs());
+        const newCoords = JSON.stringify(coords);
+        
+        if (oldCoords !== newCoords) {
+            Debug.log('Draw', 'Updating polygon coordinates');
+            polygonLayer.setLatLngs(coords);
+            Debug.log('Draw', 'Coordinates updated successfully');
+        } else {
+            Debug.log('Draw', 'Coordinates already normalized, no update needed');
+        }
+        
+        Debug.log('Draw', 'Creating EditToolbar with drawnItems:', drawnItems ? 'present' : 'MISSING');
+        Debug.log('Draw', 'drawnItems layer count:', drawnItems ? drawnItems.getLayers().length : 'N/A');
+        
+        polygonEditHandler = new L.EditToolbar.Edit(map, {
+            featureGroup: drawnItems,
+            selectedPathOptions: {
+                dashArray: '10, 10',
+                fill: true,
+                fillColor: '#fe57a1',
+                fillOpacity: 0.1,
+                maintainColor: false
+            }
+        });
+        
+        Debug.log('Draw', 'EditToolbar created, enabling...');
+        polygonEditHandler.enable();
+        
+        // Start polling for live coordinate changes during edit
+        lastEditCoords = JSON.stringify(polygonLayer.getLatLngs());
+        isEditingForPreview = true;
+        
+        // Stop any existing interval
+        if (editCheckInterval) {
+            clearInterval(editCheckInterval);
+            editCheckInterval = null;
+        }
+        
+        // Poll every 200ms to detect coordinate changes during vertex drag
+        editCheckInterval = setInterval(function() {
+            if (!polygonEditHandler) {
+                // Edit mode ended, stop polling
+                clearInterval(editCheckInterval);
+                editCheckInterval = null;
+                isEditingForPreview = false;
+                return;
+            }
+            
+            const currentCoords = JSON.stringify(polygonLayer.getLatLngs());
+            if (currentCoords !== lastEditCoords) {
+                Debug.log('Draw', '→ Vertex moved, regenerating flight plan LIVE (terrain analysis skipped)');
+                updateFlightPlan();
+                lastEditCoords = currentCoords;
+            }
+        }, 200);
+        
+        Debug.log('Draw', '✓✓✓ EditToolbar handler enabled successfully');
+        updateDrawButtons(false, true);
+        
+    } catch (e) {
+        Debug.error('Draw', 'FAILED to enable EditToolbar', e);
+        Debug.error('Draw', 'Stack trace:', e.stack);
+        polygonEditHandler = null;
+        alert('Bearbeitungsmodus konnte nicht aktiviert werden: ' + e.message);
+        updateDrawButtons(false, false);
+    }
+}
+
+function finishPolygonDraw() {
+    console.log('*** finishPolygonDraw ENTRY POINT ***');
+    Debug.log('Draw', '========== FINISH POLYGON BUTTON PRESSED ==========');
+    Debug.log('Draw', `polygonEditHandler exists: ${!!polygonEditHandler}`);
+    Debug.log('Draw', `activeDrawHandler exists: ${!!activeDrawHandler}`);
+    
+    // Stop edit polling if running
+    if (editCheckInterval) {
+        clearInterval(editCheckInterval);
+        editCheckInterval = null;
+        Debug.log('Draw', 'Edit polling stopped');
+    }
+    
+    // Case 1: Finishing an EDIT session
+    if (polygonEditHandler) {
+        Debug.log('Draw', '→ Case 1: Finishing EDIT - disabling handler');
+        try {
+            Debug.log('Draw', `Before disable - polygonEditHandler type: ${typeof polygonEditHandler}, has disable: ${typeof polygonEditHandler.disable}`);
+            polygonEditHandler.disable();
+            Debug.log('Draw', 'polygonEditHandler.disable() called successfully');
+            
+            polygonEditHandler = null;
+            Debug.log('Draw', 'polygonEditHandler set to null');
+            
+            // Re-enable terrain analysis
+            isEditingForPreview = false;
+            Debug.log('Draw', 'isEditingForPreview set to false');
+            
+            Debug.log('Draw', 'Calling updateFlightPlan with terrain analysis...');
+            updateFlightPlan();
+            Debug.log('Draw', 'updateFlightPlan completed');
+            
+            Debug.log('Draw', 'Calling normalizePolygon...');
+            normalizePolygon();
+            Debug.log('Draw', 'normalizePolygon completed');
+            
+            Debug.log('Draw', 'Calling updateDrawButtons(false, false)...');
+            updateDrawButtons(false, false);
+            Debug.log('Draw', '✓ EDIT session finished successfully');
+            return;
+        } catch (e) {
+            Debug.error('Draw', 'Error in EDIT finish', e);
+            Debug.error('Draw', 'Stack:', e.stack);
+            polygonEditHandler = null;
+        }
+    }
+    
+    // Case 2: Finishing a NEW drawing
+    if (activeDrawHandler && typeof activeDrawHandler.completeShape === 'function') {
+        Debug.log('Draw', '→ Case 2: Finishing NEW drawing');
+        try {
+            activeDrawHandler.completeShape();
+            activeDrawHandler.disable();
+            activeDrawHandler = null;
+        } catch (e) {
+            Debug.error('Draw', 'Error in completeShape', e);
+            activeDrawHandler = null;
+        }
+        updateDrawButtons(false);
+        return;
+    }
+
+    Debug.log('Draw', '⚠️ No active handler found in finishPolygonDraw');
+    updateDrawButtons(false);
+}
+
+function cancelPolygonDraw() {
+    Debug.log('Draw', 'cancelPolygonDraw called');
+    
+    // Stop edit polling if running
+    if (editCheckInterval) {
+        clearInterval(editCheckInterval);
+        editCheckInterval = null;
+        Debug.log('Draw', 'Edit polling stopped');
+    }
+    
+    // Case 1: Cancel an EDIT session (revert changes but keep polygon)
+    if (polygonEditHandler) {
+        Debug.log('Draw', '→ Canceling EDIT mode - reverting changes');
+        try {
+            polygonEditHandler.revertLayers();
+            polygonEditHandler.disable();
+            polygonEditHandler = null;
+            Debug.log('Draw', '✓ Edit changes reverted, polygon intact');
+            // Re-enable terrain analysis for final calculation
+            isEditingForPreview = false;
+            // Regenerate flight plan with original polygon - WITH terrain
+            updateFlightPlan();
+        } catch (e) {
+            Debug.error('Draw', 'Error reverting edit', e);
+            polygonEditHandler = null;
+        }
+        updateDrawButtons(false);
+        return;
+    }
+    
+    // Case 2: Cancel a NEW drawing (abort drawing, polygon doesn't exist yet)
+    if (activeDrawHandler) {
+        Debug.log('Draw', '→ Canceling DRAW mode - aborting new polygon');
+        try {
+            activeDrawHandler.disable();
+            activeDrawHandler = null;
+            Debug.log('Draw', '✓ Drawing cancelled');
+        } catch (e) {
+            Debug.error('Draw', 'Error canceling draw', e);
+            activeDrawHandler = null;
+        }
+    }
+    
+    updateDrawButtons(false);
+}
+
+function updateDrawButtons(isDrawing, isEditing = false) {
+    const hasPolygon = !!polygonLayer;
+    const btnDraw = document.getElementById('btn-draw-poly');
+    const btnEdit = document.getElementById('btn-edit-poly');
+    const btnDeleteLast = document.getElementById('btn-delete-last');
+    const btnDone = document.getElementById('btn-done-draw');
+    const btnCancel = document.getElementById('btn-cancel-draw');
+    const btnDelete = document.getElementById('btn-delete-poly');
+
+    // Log button existence
+    Debug.log('UI', `Button check - Delete exists: ${!!btnDelete}, Edit: ${!!btnEdit}, Done: ${!!btnDone}`);
+
+    if (btnDraw) btnDraw.disabled = isDrawing || isEditing;
+    if (btnEdit) btnEdit.disabled = isDrawing || isEditing || !hasPolygon;
+    if (btnDeleteLast) btnDeleteLast.disabled = !isDrawing || isEditing;
+    if (btnDone) btnDone.disabled = !(isDrawing || isEditing);
+    if (btnCancel) btnCancel.disabled = !(isDrawing || isEditing);
+    if (btnDelete) {
+        const deleteDisabled = isDrawing || isEditing || !hasPolygon;
+        btnDelete.disabled = deleteDisabled;
+        Debug.log('UI', `DELETE Button state: disabled=${deleteDisabled}, isDrawing=${isDrawing}, isEditing=${isEditing}, hasPolygon=${hasPolygon}`);
+    } else {
+        Debug.log('UI', '⚠️ DELETE Button element not found in DOM!');
+    }
+    
+    Debug.log('UI', `DrawButtons updated: Draw=${btnDraw?.disabled}, Edit=${btnEdit?.disabled}, DeleteLast=${btnDeleteLast?.disabled}, Done=${btnDone?.disabled}, Cancel=${btnCancel?.disabled}, Delete=${btnDelete?.disabled}`);
+}
+
+function normalizePolygon() {
+    // Restore polygon to normal blue color after edit is finalized
+    if (polygonLayer) {
+        polygonLayer.setStyle({
+            color: '#3498db',
+            fillOpacity: 0.2,
+            weight: 2,
+            dashArray: null // Remove dashed style from edit mode
+        });
+        Debug.log('Draw', 'Polygon normalized to blue');
+    }
+}
+
+function deletePolygon() {
+    Debug.log('Draw', 'deletePolygon called');
+    
+    // Stop edit polling if running
+    if (editCheckInterval) {
+        clearInterval(editCheckInterval);
+        editCheckInterval = null;
+        Debug.log('Draw', 'Edit polling stopped');
+    }
+    
+    // Re-enable terrain analysis
+    isEditingForPreview = false;
+    
+    if (!polygonLayer) {
+        Debug.log('Draw', 'No polygon to delete');
+        return;
+    }
+    
+    try {
+        // Remove polygon and all associated elements
+        Debug.log('Draw', 'Removing polygon from map');
+        drawnItems.removeLayer(polygonLayer);
+        polygonLayer = null;
+        
+        // Clear waypoints
+        Debug.log('Draw', 'Clearing waypoints');
+        waypoints = [];
+        
+        // Remove flight lines from map
+        Debug.log('Draw', 'Removing flight lines');
+        flightLines.forEach(line => {
+            map.removeLayer(line);
+        });
+        flightLines = [];
+        
+        // Update UI
+        Debug.log('Draw', 'Updating UI elements');
+        updateFlightPlan();
+        updateDrawButtons(false);
+        
+        Debug.log('Draw', '✓✓✓ Polygon deleted completely');
+        
+    } catch (e) {
+        Debug.error('Draw', 'Error deleting polygon', e);
+    }
+}
+
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
 }
+
+function deleteLastPoint() {
+    if (activeDrawHandler && activeDrawHandler.deleteLastVertex) {
+        activeDrawHandler.deleteLastVertex();
+    }
+}
+
+
 
 function toggleRightPanel() {
     const panel = document.getElementById('right-panel');
@@ -202,16 +590,28 @@ function initMap() {
     switchTab('mapping');
 
     map.on(L.Draw.Event.CREATED, function (event) {
+        Debug.log('Draw', 'Event CREATED triggered', event.layerType);
         drawnItems.clearLayers();
         if (currentTab === 'mapping') {
             polygonLayer = event.layer;
             drawnItems.addLayer(polygonLayer);
+            Debug.log('Draw', 'polygonLayer assigned', polygonLayer);
             updateFlightPlan();
         } else {
             centerMarker = event.layer;
             drawnItems.addLayer(centerMarker);
             generateInspectionPlan();
         }
+        
+        // Force update buttons and ensure EDIT is enabled if we have a polygon
+        setTimeout(() => {
+            updateDrawButtons(false, false);
+            const btnEdit = document.getElementById('btn-edit-poly');
+            if (polygonLayer && btnEdit) {
+                btnEdit.disabled = false;
+                Debug.log('UI', 'Manually enabled EDIT button');
+            }
+        }, 200);
     });
 
     // Search functionality
@@ -499,6 +899,12 @@ document.getElementById('exportInspBtn').onclick = async () => {
 document.getElementById('generateInspBtn').onclick = generateInspectionPlan;
 
 async function analyzeTerrain(polygon) {
+    // Skip terrain analysis during live-edit preview to avoid API rate limiting
+    if (isEditingForPreview) {
+        Debug.log('Terrain', 'Skipping terrain analysis during live edit preview');
+        return { minElev: 0, maxElev: 0 }; // Return default values
+    }
+    
     Debug.log('Terrain', 'Starting terrain analysis grid (25x25)');
     const bbox = turf.bbox(polygon);
     const gridPoints = [];
@@ -521,67 +927,33 @@ async function analyzeTerrain(polygon) {
     let minH = Infinity;
     let maxH = -Infinity;
     
-    // Fetch in chunks of 100
-    for (let i = 0; i < gridPoints.length; i += 100) {
-        const chunk = gridPoints.slice(i, i + 100);
+    // Fetch in smaller chunks of 40 to avoid URL length limits and CORS issues
+    for (let i = 0; i < gridPoints.length; i += 40) {
+        const chunk = gridPoints.slice(i, i + 40);
         const coords = chunk.map(p => `${p[1]},${p[0]}`).join('|');
+        
+        // Add a small delay between batches to respect API rate limits
+        if (i > 0) await new Promise(resolve => setTimeout(resolve, 300));
+
         try {
             const response = await fetch(`https://api.open-elevation.com/api/v1/lookup?locations=${coords}`);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
-            data.results.forEach(r => {
-                if (r.elevation < minH) minH = r.elevation;
-                if (r.elevation > maxH) maxH = r.elevation;
-            });
-        } catch (e) { Debug.error('Terrain', 'Grid fetch failed', e); }
-    }
-
-    const minDisplay = document.getElementById('stat-terrain-min');
-    const maxDisplay = document.getElementById('stat-terrain-max');
-    if (minDisplay) minDisplay.innerText = minH.toFixed(1) + " m";
-    if (maxDisplay) maxDisplay.innerText = maxH.toFixed(1) + " m";
-}
-
-async function analyzeTerrain(polygon) {
-    Debug.log('Terrain', 'Starting terrain analysis grid (25x25)');
-    const bbox = turf.bbox(polygon);
-    const gridPoints = [];
-    const steps = 25;
-    
-    const xStep = (bbox[2] - bbox[0]) / steps;
-    const yStep = (bbox[3] - bbox[1]) / steps;
-
-    for (let i = 0; i <= steps; i++) {
-        for (let j = 0; j <= steps; j++) {
-            const pt = [bbox[0] + i * xStep, bbox[1] + j * yStep];
-            if (turf.booleanPointInPolygon(pt, polygon)) {
-                gridPoints.push(pt);
+            if (data && data.results) {
+                data.results.forEach(r => {
+                    if (r.elevation < minH) minH = r.elevation;
+                    if (r.elevation > maxH) maxH = r.elevation;
+                });
             }
+        } catch (e) { 
+            Debug.error('Terrain', `Grid fetch failed at index ${i}. API might be busy.`, e); 
         }
     }
 
-    if (gridPoints.length === 0) return;
-
-    let minH = Infinity;
-    let maxH = -Infinity;
-    
-    // Fetch in chunks of 100
-    for (let i = 0; i < gridPoints.length; i += 100) {
-        const chunk = gridPoints.slice(i, i + 100);
-        const coords = chunk.map(p => `${p[1]},${p[0]}`).join('|');
-        try {
-            const response = await fetch(`https://api.open-elevation.com/api/v1/lookup?locations=${coords}`);
-            const data = await response.json();
-            data.results.forEach(r => {
-                if (r.elevation < minH) minH = r.elevation;
-                if (r.elevation > maxH) maxH = r.elevation;
-            });
-        } catch (e) { Debug.error('Terrain', 'Grid fetch failed', e); }
-    }
-
     const minDisplay = document.getElementById('stat-terrain-min');
     const maxDisplay = document.getElementById('stat-terrain-max');
-    if (minDisplay) minDisplay.innerText = minH.toFixed(1) + " m";
-    if (maxDisplay) maxDisplay.innerText = maxH.toFixed(1) + " m";
+    if (minDisplay && minH !== Infinity) minDisplay.innerText = minH.toFixed(1) + " m";
+    if (maxDisplay && maxH !== -Infinity) maxDisplay.innerText = maxH.toFixed(1) + " m";
 }
 
 async function searchLocation() {
@@ -631,7 +1003,12 @@ function updateFlightPlan() {
         else intervalDisplay.classList.add('interval-green');
     }
 
-    generateGrid(polygonLayer.toGeoJSON(), stripSpacing, photoSpacing, direction, interval, speed, height, triggerMode);
+    // Angle for grid generation should be perpendicular to flight direction
+    // If direction=0° (North), strips should run East-West, so angle=90°
+    // If direction=90° (East), strips should run North-South, so angle=0°
+    const gridRunAngle = (direction + 90) % 360;
+    
+    generateGrid(polygonLayer.toGeoJSON(), stripSpacing, photoSpacing, gridRunAngle, interval, speed, height, triggerMode);
 }
 
 function generateGrid(polygon, spacing, photoSpacing, angle, interval, speed, height, triggerMode) {
@@ -706,7 +1083,8 @@ function generateGrid(polygon, spacing, photoSpacing, angle, interval, speed, he
             lat: rotatedPt.geometry.coordinates[1],
             lng: rotatedPt.geometry.coordinates[0],
             action: wp.action,
-            label: wp.label
+            label: wp.label,
+            heading: (angle + 90) % 360
         };
     });
 
@@ -749,10 +1127,18 @@ function renderWaypoints(interval, height) {
     
     window.markerLayer = L.layerGroup().addTo(map);
     const latlngs = waypoints.map((wp, i) => {
+        // First waypoint is purple (start), others are green (action) or blue (none)
+        let markerColor;
+        if (i === 0) {
+            markerColor = '#9b59b6'; // Purple - flight start
+        } else {
+            markerColor = wp.action !== 'none' ? '#28a745' : '#007bff'; // Green or blue
+        }
+        
         const marker = L.circleMarker([wp.lat, wp.lng], {
             radius: 6, // Slightly larger for better clicking
-            color: wp.action !== 'none' ? '#28a745' : '#007bff',
-            fillColor: wp.action !== 'none' ? '#28a745' : '#007bff',
+            color: markerColor,
+            fillColor: markerColor,
             fillOpacity: 0.6,
             weight: 2,
             interactive: true
@@ -771,7 +1157,7 @@ function renderWaypoints(interval, height) {
 
             let detailsHtml = `
                 <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 4px solid ${wp.action !== 'none' ? '#28a745' : '#007bff'};">
-                    <h3 style="margin: 0 0 10px 0; font-size: 1em;">Waypoint #${i}</h3>
+                    <h3 style="margin: 0 0 10px 0; font-size: 1em;">Waypoint #${i}${i === 0 ? ' (START)' : ''}</h3>
                     <table style="width: 100%; font-size: 0.85em; border-collapse: collapse;">
                         <tr><td style="padding: 4px 0; color: #666;">Action:</td><td style="font-weight: bold;">${wp.label}</td></tr>
                         <tr><td style="padding: 4px 0; color: #666;">Lat:</td><td style="font-family: monospace;">${wp.lat.toFixed(6)}</td></tr>
@@ -836,6 +1222,10 @@ async function exportKMZ() {
         for (let i = 0; i < waypoints.length; i += 40) {
             const chunk = waypoints.slice(i, i + 40);
             const coords = chunk.map(wp => `${wp.lat},${wp.lng}`).join('|');
+            
+            // Add delay to prevent rate limiting
+            if (i > 0) await new Promise(resolve => setTimeout(resolve, 300));
+
             try {
                 const response = await fetch(`https://api.open-elevation.com/api/v1/lookup?locations=${coords}`);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -914,7 +1304,7 @@ async function exportKMZ() {
         <wpml:waypointSpeed>${speed}</wpml:waypointSpeed>
         <wpml:waypointHeadingParam>
           <wpml:waypointHeadingMode>${currentTab === 'inspection' ? 'smoothTransition' : 'followWayline'}</wpml:waypointHeadingMode>
-          <wpml:waypointHeadingAngle>${currentTab === 'inspection' ? wp.heading.toFixed(1) : 0}</wpml:waypointHeadingAngle>
+          <wpml:waypointHeadingAngle>${wp.heading?.toFixed(1) ?? 0}</wpml:waypointHeadingAngle>
           <wpml:waypointHeadingAngleEnable>1</wpml:waypointHeadingAngleEnable>
           <wpml:waypointHeadingPathMode>followBadArc</wpml:waypointHeadingPathMode>
         </wpml:waypointHeadingParam>

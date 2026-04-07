@@ -21,8 +21,68 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         #header .menu-toggle { cursor: pointer; margin-right: 20px; font-size: 24px; }
-        #header .title { font-weight: bold; text-transform: uppercase; letter-spacing: 1px; flex-grow: 1; }
-        #header .camera-settings-btn { cursor: pointer; font-size: 20px; padding: 5px 10px; border: 1px solid #444; border-radius: 4px; }
+        #header .title { 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            flex-grow: 1; 
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        #header .title:hover {
+            color: #aaa;
+        }
+
+        /* Custom Draw Toolbar */
+        .draw-tool-group {
+            display: flex;
+            background: #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: space-around;
+            border: 1px solid #ccc;
+        }
+        .draw-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            font-size: 0.75em;
+            font-weight: bold;
+            gap: 5px;
+            flex: 1;
+            transition: opacity 0.2s;
+        }
+        .draw-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .draw-btn .draw-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: 22px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .draw-btn.draw .draw-icon { background-image: url('UI/draw icon.png'); background-color: #444; }
+        .draw-btn.edit .draw-icon { background-image: url('UI/edit icon.png'); background-color: #f39c12; }
+        .draw-btn.delete .draw-icon { background-image: url('UI/delete last icon.png'); background-color: #c0392b; }
+        .draw-btn.done .draw-icon { background-image: url('UI/done icon.png'); background-color: #27ae60; }
+        .draw-btn.cancel .draw-icon { background-image: url('UI/cancel icon.png'); background-color: #e74c3c; }
+
+        /* Hide default Leaflet.draw toolbar */
+        .leaflet-draw-toolbar {
+            display: none !important;
+        }
 
         /* Sidebar Overlay Styles */
         #sidebar { 
@@ -158,7 +218,7 @@
 <body>
     <header id="header">
         <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
-        <div class="title">Create Flight</div>
+        <div class="title" onclick="headerCreateFlight()">Create Flight</div>
         
         <div id="header-controls" style="display: flex; align-items: center; gap: 15px;">
             <div class="search-group" style="display: flex; background: #222; border-radius: 4px; padding: 2px 8px;">
@@ -268,6 +328,34 @@
                         <p>Mapping Setup</p>
                     </div>
                     <div class="mode-icon">🗺️</div>
+                </div>
+
+                <!-- Custom Polygon Draw Menu -->
+                <div class="draw-tool-group">
+                    <button class="draw-btn draw" id="btn-draw-poly" onclick="startPolygonDraw()">
+                        <div class="draw-icon"></div>
+                        <span>DRAW</span>
+                    </button>
+                    <button class="draw-btn edit" id="btn-edit-poly" onclick="startPolygonEdit()" disabled>
+                        <div class="draw-icon"></div>
+                        <span>EDIT</span>
+                    </button>
+                    <button class="draw-btn delete" id="btn-delete-last" onclick="deleteLastPoint()" disabled>
+                        <div class="draw-icon"></div>
+                        <span>DELETE LAST</span>
+                    </button>
+                    <button class="draw-btn done" id="btn-done-draw" onclick="finishPolygonDraw()" disabled>
+                        <div class="draw-icon"></div>
+                        <span>DONE</span>
+                    </button>
+                    <button class="draw-btn cancel" id="btn-cancel-draw" onclick="cancelPolygonDraw()" disabled>
+                        <div class="draw-icon"></div>
+                        <span>CANCEL</span>
+                    </button>
+                    <button class="draw-btn delete" id="btn-delete-poly" onclick="deletePolygon()" disabled>
+                        <div class="draw-icon"></div>
+                        <span>DELETE</span>
+                    </button>
                 </div>
 
                 <div class="control-row">

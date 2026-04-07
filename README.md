@@ -25,12 +25,40 @@ Drone Planner is a browser-based application for creating and managing drone fli
 - shapefile and sample data files in repo root
 
 ## How it works
-1. Select or configure a drone (focal length, pixel size, sensor size).
-2. Draw a polygon on the map or import a shapefile defining the survey area.
-3. Configure flight parameters: direction, GSD or height, overlaps.
-4. Click "Calculate Flight Strips" to generate strips and photo points.
-5. The app fetches terrain elevation data and computes absolute altitudes.
-6. Export results (CSV, JSON, KML). KML includes altitude and altitudeMode to show 3D in Google Earth.
+1. **Draw or Select Survey Area**:
+   - Click **DRAW** to start drawing a polygon on the map (click to add vertices, double-click to finish).
+2. **Configure Flight Parameters**:
+   - Set Flight Height (AGL), Flight Speed, Front Overlap, Side Overlap, and **Flight Direction** (0-359°).
+   - Flight Direction 0° = North; 90° = East (standard DJI compass).
+   - Strips automatically orient **perpendicular** to the flight direction (e.g., Direction=0° → Strips run East-West).
+3. **Edit Polygon if Needed**:
+   - Click **EDIT** to modify polygon by dragging vertices.
+   - Waypoints update **live** every 200ms as you drag (without terrain API calls for performance).
+   - Click **DONE** when satisfied with changes.
+4. **Generate Flight Plan**:
+   - Click **"GENERATE FLIGHT PLAN"** button or modify height/speed/direction to auto-generate.
+5. **Review Waypoints**:
+   - **Purple waypoint** = Flight start position.
+   - **Green waypoints** = Photo capture actions.
+   - **Blue waypoints** = Navigation waypoints.
+   - Click any waypoint to see altitude, heading, and camera settings.
+6. **Fetch Terrain Data** (if enabled):
+   - App fetches elevation data in batches of 40 points from Open-Elevation API.
+   - Compares terrain variation against threshold (default 10%).
+   - Chooses altitude mode: `relativeToStartPoint` for flat terrain or `absolute` (AMSL) for hilly terrain.
+7. **Export Results**:
+   - Click **Export** to download KMZ file.
+   - Import into DJI Fly app using the file replacement workaround.
+
+### Polygon Editing Deep Dive
+- **DRAW**: Creates a new polygon. Click to add vertices, double-click to finish, or click DONE.
+- **EDIT**: Modifies the existing polygon. Drag vertices to reshape; waypoints regenerate in real-time.
+- **DELETE LAST**: Removes the last vertex during drawing.
+- **DONE**: Finalizes drawing/editing and applies terrain analysis.
+- **CANCEL**: Aborts active operation (only during drawing/editing).
+- **DELETE**: Completely removes polygon and all associated waypoints/flight paths.
+
+**Pro Tip**: During EDIT mode, terrain analysis is skipped for better performance. Terrain is recalculated after you click DONE.
 
 ## Elevation integration details
 - Batch requests to Open Elevation API endpoint `https://api.open-elevation.com/api/v1/lookup` (POST JSON: { locations: [{latitude, longitude}, ...] }).
@@ -72,9 +100,60 @@ window.stripElevations = {
 - Use console logging for long-running tasks that may require inspection.
 
 ## Troubleshooting
-- If KML shows features clamped to ground in Google Earth: ensure `<altitudeMode>absolute</altitudeMode>` is present and KML is opened with 3D terrain enabled.
-- If elevations are missing: check console logs for Open Elevation request/response, and check network (CORS) restrictions.
-- If the loading indicator causes errors: ensure `#loadingElevation` exists in the DOM; the app creates it programmatically if missing.
+
+### Flight Strips Oriented Wrong (East-West instead of North-South)
+- **Issue**: Setting direction=0° (North) should create North-South strips, but you see East-West strips.
+- **Cause**: Flight direction was being passed directly to the grid generator instead of as perpendicular angle.
+- **Fix**: Update `updateFlightPlan()` to convert direction to grid angle: `gridRunAngle = (direction + 90) % 360`.
+- **Lesson**: Flight Direction ≠ Strip Orientation. Strips run perpendicular to flight direction.
+
+### Waypoint Heading is 90° Off
+- **Issue**: Exported KML shows heading 90° off from expected value (e.g., expecting North, got East).
+- **Cause**: Web coordinate system (0°=East) vs DJI compass system (0°=North) mismatch.
+- **Fix**: Add +90° offset in heading calculation: `heading = (angle + 90) % 360`.
+- **Lesson**: Always clarify compass conventions before calculations; document assumptions.
+
+### Map Shows a White Screen After Reload
+- **Issue**: Map doesn't render after code changes; syntax error in console.
+- **Cause**: Orphaned incomplete code from partial function deletions (e.g., `updateDrawButtons(true);` with no parent).
+- **Fix**: Use exact multi-line context when replacing code to avoid leaving orphaned statements.
+- **Lesson**: When deleting functions, ensure ALL related code is removed. Use tools that show exact whitespace.
+
+### DONE Button Doesn't Finalize Editing
+- **Issue**: After clicking DONE during polygon editing, buttons remain disabled and polygon styling isn't restored.
+- **Cause**: Duplicate function definitions. Old simple version at line 440 overwrites correct version at line 208.
+- **Fix**: Grep for all function definitions; delete all old duplicates. Keep only the original complete versions.
+- **Lesson**: Always check for duplicates after edits: `grep -n "^function functionName" app.js`
+
+### Delete Button Never Enables
+- **Issue**: DELETE button remains disabled even after finishing drawing/editing.
+- **Cause**: `updateDrawButtons()` called with incomplete logic, or duplicate version missing DELETE button handling.
+- **Fix**: Ensure all button state updates go through single `updateDrawButtons()` function; log each call for debugging.
+- **Lesson**: Centralize all UI state updates in one function to prevent inconsistencies.
+
+### Elevation Data Not Updating During Live Edit
+- **Issue**: Dragging polygon vertices doesn't regenerate waypoints with terrain data.
+- **Cause**: API rate limiting. Terrain analysis is intentionally skipped during live preview.
+- **Fix**: This is by design. Terrain fetches resume after clicking DONE.
+- **Lesson**: Document performance optimizations; users need to know why something is "not working."
+
+### KML Shows 0° Wrong Direction
+- **Issue**: Exported waypoints have heading 0° pointing East instead of North.
+- **Cause**: Heading calculated without compass system conversion.
+- **Fix**: Use `heading?.toFixed(1) ?? 0` with +90° conversion: `heading = (grid_angle + 90) % 360`.
+
+### If KML shows features clamped to ground in Google Earth
+- Ensure `<altitudeMode>absolute</altitudeMode>` is present in exported KML.
+- Open KML with 3D terrain enabled in Google Earth.
+
+### If elevations are missing
+- Check console logs for Open-Elevation request/response errors.
+- Verify API batching: requests should be 40-point batches.
+- Check network tab (CORS restrictions) if API calls fail silently.
+
+### If the loading indicator causes errors
+- Ensure `#loadingElevation` element exists in the DOM.
+- App creates it programmatically if missing; verify in browser console.
 
 ## Testing checklist
 - [ ] Draw polygon and calculate strips

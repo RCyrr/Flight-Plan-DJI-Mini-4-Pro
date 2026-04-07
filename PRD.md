@@ -10,15 +10,32 @@ A web-based tool to generate DJI-compatible KMZ flight plans (WPML format) for t
 
 ## 3. Key Features
 - **Interactive Map**: Leaflet.js with OSM and Satellite (Esri) layers. Deep zoom (level 22) for precise waypoint selection.
-- **Grid Generation**: S-pattern flight strips based on GSD, overlap (Front/Side), and user-defined Flight Direction (0-359°).
+- **Polygon Drawing & Editing Toolbar**:
+    - **DRAW**: Create new polygon by clicking on map vertices.
+    - **EDIT**: Modify existing polygon by dragging vertices (live waypoint preview at 200ms interval).
+    - **DELETE LAST**: Remove the last vertex from active drawing.
+    - **DONE**: Finalize drawing or editing and regenerate flight plan.
+    - **CANCEL**: Abort active operation without saving changes.
+    - **DELETE**: Remove entire polygon and all associated waypoints/flight paths.
+- **Smart Live-Preview During Editing**: 
+    - Regenerates waypoints in real-time while dragging polygon vertices.
+    - Skips terrain API calls during preview for better performance.
+    - Terrain analysis re-enables after completing edit.
+- **Waypoint Start Indicator**: First waypoint displayed in **purple** to clearly mark flight start position.
+- **Grid Generation**: S-pattern flight strips based on GSD, overlap (Front/Side), and user-defined **Flight Direction** (0-359° compass heading).
+    - Flight Direction 0° = North; 90° = East (standard DJI compass).
+    - Strips automatically orient perpendicular to flight direction.
 - **Camera Support**: 
     - Standard Lens (6.78mm real focal length).
     - Wide Angle Adapter (4.8mm real focal length).
     - 1.2um pixel size, 1/1.3" sensor (9.6mm width).
 - **Terrain Awareness**: Integration with Open-Elevation API for AMSL altitude calculation (Terrain + Flying Height).
+    - Batched queries (40 points per request) with 300ms throttle.
+    - Configurable terrain threshold (default 10%) for altitude mode selection.
 - **Hybrid Trigger Strategy**:
     - **Precise Mode**: Waypoint-per-photo (max 200) with full camera control (ISO, Shutter, WB, Focus).
     - **Optimized Mode**: 4-waypoint-per-strip logic for large areas with manual interval instructions.
+- **Correct Heading Export**: Waypoint heading values correctly converted from grid angle to DJI compass (0° = North).
 - **KMZ Management**: Export of DJI WPML (V2/V3) files and full editable import of existing missions.
 
 ## 4. Constraints
