@@ -211,6 +211,164 @@
         }
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2900; display: none; }
 
+        /* Welcome Modal Specific Styles */
+        #welcomeModal.modal-overlay {
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000; /* Ensure it's above everything */
+        }
+        #welcomeModal .modal-content {
+            background: #f5f5f5;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 550px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            color: #222;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        #welcomeModal h2 { 
+            margin-top: 0; 
+            color: #000; 
+            font-size: 1.8em;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        #welcomeModal p { font-size: 1.1em; line-height: 1.5; }
+        #welcomeModal ul { 
+            margin: 25px 0; 
+            padding-left: 30px; 
+            list-style-type: none;
+            text-align: left;
+        }
+        #welcomeModal li { 
+            margin-bottom: 12px; 
+            font-size: 1em;
+            position: relative;
+        }
+        #welcomeModal li::before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: -25px;
+            font-weight: bold;
+        }
+        #welcomeModal .modal-footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        #welcomeModal .btn-start {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #welcomeModal .btn-start:hover { 
+            background: #219150; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        #welcomeModal .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            color: #444;
+            cursor: pointer;
+        }
+        #welcomeModal .checkbox-container input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Tutorial Highlight Effect */
+        .tutorial-highlight {
+            outline: 6px solid #e74c3c !important;
+            outline-offset: 4px;
+            z-index: 10001 !important;
+            position: relative;
+            transition: outline 0.3s ease;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+
+        /* Tutorial Step Box - Top-Right Floating */
+        #tutorialStepBox {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            z-index: 10002;
+            width: 380px;
+            border: 3px solid #27ae60;
+            display: none;
+            color: #222;
+            text-align: center;
+        }
+        #tutorialStepBox h3 { margin-top: 0; color: #27ae60; font-size: 1.3em; border-bottom: 2px solid #eee; padding-bottom: 8px; }
+        #tutorialStepBox p { line-height: 1.5; margin: 15px 0; font-size: 1em; }
+        
+        .tutorial-graphic {
+            background: #eee;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60px;
+        }
+        .tutorial-icon-preview {
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .tutorial-btn-preview {
+            padding: 10px 20px;
+            background: #000;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .tutorial-nav { display: flex; justify-content: space-between; margin-top: 25px; gap: 15px; }
+        .btn-tutorial {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+        .btn-tutorial-next { background: #27ae60; color: white; box-shadow: 0 4px 0 #219150; }
+        .btn-tutorial-next:active { transform: translateY(2px); box-shadow: 0 2px 0 #219150; }
+        .btn-tutorial-prev { background: #95a5a6; color: white; box-shadow: 0 4px 0 #7f8c8d; }
+        .btn-tutorial-prev:active { transform: translateY(2px); box-shadow: 0 2px 0 #7f8c8d; }
+        .btn-tutorial:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+
         #preview-3d { width: 100%; height: 200px; background: #1a1a1a; margin-top: 15px; border-radius: 4px; position: relative; overflow: hidden; perspective: 800px; }
         /* ...existing 3D styles... */
     </style>
@@ -531,6 +689,44 @@
         </div>
 
         <div id="map"></div>
+
+        <!-- Welcome Modal -->
+        <div id="welcomeModal" class="modal-overlay" style="display:none;">
+            <div class="modal-content">
+                <h2>Welcome to DJI Flight Planner</h2>
+                <p>This tool helps you create precise flight plans for your DJI Mini 4 Pro.</p>
+                <ul style="text-align: left;">
+                    <li>Start by clicking <b>CREATE FLIGHT</b> in the top menu bar.</li>
+                    <li>Select <b>Mapping</b> or <b>Inspection</b> depending on your mission type.</li>
+                    <li>Use <b>DRAW</b> to define your survey area.</li>
+                    <li>Adjust <b>Height, Speed, and Overlap</b> in the left panel.</li>
+                    <li><b>EDIT</b> your polygon to see real-time path updates.</li>
+                    <li><b>Export KMZ</b> to import directly into the DJI Fly App.</li>
+                </ul>
+                
+                <div class="modal-footer">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="dontShowAgain"> Don't show this again
+                    </label>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="startTutorial()" class="btn-start" style="background: #3498db;">Start Tutorial</button>
+                        <button onclick="closeWelcomeModal()" class="btn-start">Quick Start</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial Step Box -->
+        <div id="tutorialStepBox">
+            <h3 id="tutorialTitle">Step 1</h3>
+            <div id="tutorialGraphic" class="tutorial-graphic"></div>
+            <p id="tutorialText"></p>
+            <div class="tutorial-nav">
+                <button onclick="prevTutorialStep()" id="btnPrevStep" class="btn-tutorial btn-tutorial-prev">Back</button>
+                <button onclick="nextTutorialStep()" id="btnNextStep" class="btn-tutorial btn-tutorial-next">Next</button>
+            </div>
+            <button onclick="endTutorial()" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-size:0.85em; margin-top:20px; width:100%; text-decoration: underline;">End Tutorial</button>
+        </div>
 
         <div id="right-panel-container">
             <div id="panel-resizer"></div>

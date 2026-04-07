@@ -1404,4 +1404,167 @@ if (importFileInput) {
     };
 }
 
-window.onload = initMap;
+window.onload = () => {
+    initMap();
+    checkWelcomeModal();
+};
+
+function checkWelcomeModal() {
+    const isHidden = localStorage.getItem('hideWelcomeManual');
+    if (!isHidden) {
+        const modal = document.getElementById('welcomeModal');
+        if (modal) modal.style.display = 'flex';
+    }
+}
+
+function closeWelcomeModal() {
+    const dontShow = document.getElementById('dontShowAgain').checked;
+    if (dontShow) {
+        localStorage.setItem('hideWelcomeManual', 'true');
+    }
+    const modal = document.getElementById('welcomeModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// --- Interactive Tutorial Logic ---
+let currentTutorialStep = 0;
+let isTutorialActive = false;
+
+const tutorialSteps = [
+    {
+        title: "Step 1: Search Location",
+        text: "Type 'Feuersee Stuttgart' into the search bar and click the magnifying glass icon to center the map.",
+        elementId: "header-controls",
+        graphic: '<div class="tutorial-btn-preview" style="background:#222; border:1px solid #444;">Feuersee Stuttgart 🔍</div>',
+        action: () => {
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            if (searchInput) searchInput.value = "Feuersee Stuttgart";
+            if (searchBtn) searchBtn.addEventListener('click', autoNextTutorial, { once: true });
+        }
+    },
+    {
+        title: "Step 2: Start Planning",
+        text: "Click on 'CREATE FLIGHT' in the top menu bar to open the planning sidebar.",
+        elementId: "header",
+        graphic: '<div class="tutorial-btn-preview">CREATE FLIGHT</div>',
+        action: () => { 
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) sidebar.style.display = 'none';
+            // Add listener to the actual button
+            const titleBtn = document.querySelector('.title');
+            if (titleBtn) titleBtn.addEventListener('click', autoNextTutorial, { once: true });
+        }
+    },
+    {
+        title: "Step 3: Choose Mission Type",
+        text: "Select 'Mapping' for 2D surveys. This is ideal for capturing the Feuersee area.",
+        elementId: "mode-selection",
+        graphic: '<div style="display:flex; gap:10px;"><div class="tutorial-btn-preview" style="background:#f0f0f0; color:#333; border:1px solid #ccc;">🗺️ Mapping</div></div>',
+        action: () => { 
+            headerCreateFlight(); 
+            // Add listener to mapping card
+            const mappingCard = document.querySelector('.mode-card:first-child');
+            if (mappingCard) mappingCard.addEventListener('click', autoNextTutorial, { once: true });
+        }
+    },
+    {
+        title: "Step 4: Draw Your Area",
+        text: "Click 'DRAW' and trace the Feuersee. Try to follow the rectangular shape of the lake as shown in the preview.",
+        elementId: "mapping-setup",
+        graphic: '<div style="display:flex; flex-direction:column; align-items:center; gap:10px;"><div class="tutorial-icon-preview" style="background-image: url(\'UI/draw icon.png\'); background-color: #444; border-radius: 8px;"></div><img src="UI/Feuersee.png" style="width:200px; border-radius:8px; border:2px solid #27ae60; box-shadow: 0 4px 10px rgba(0,0,0,0.3);" alt="Feuersee Preview"></div>',
+        action: () => { 
+            showSetup('mapping');
+            const drawBtn = document.querySelector('.draw-btn.draw');
+            if (drawBtn) drawBtn.addEventListener('click', autoNextTutorial, { once: true });
+        }
+    },
+    {
+        title: "Step 5: Adjust Parameters",
+        text: "Set your Flight Height, Speed, and Overlap. The flight path updates automatically.",
+        elementId: "sidebar",
+        graphic: '⚙️ Parameters Panel',
+        action: () => {}
+    },
+    {
+        title: "Step 6: Export Mission",
+        text: "Click 'Export KMZ' to download. Note: Export is only possible if the waypoint count is below 200.",
+        elementId: "exportBtn",
+        graphic: '<div class="tutorial-btn-preview" style="background:#27ae60;">EXPORT KMZ</div>',
+        action: () => {
+            const exportBtn = document.getElementById('exportBtn');
+            if (exportBtn) exportBtn.addEventListener('click', autoNextTutorial, { once: true });
+        }
+    }
+];
+
+function autoNextTutorial() {
+    if (isTutorialActive) {
+        nextTutorialStep();
+    }
+}
+
+function startTutorial() {
+    const modal = document.getElementById('welcomeModal');
+    if (modal) modal.style.display = 'none';
+    isTutorialActive = true;
+    currentTutorialStep = 0;
+    showTutorialStep();
+}
+
+function showTutorialStep() {
+    const step = tutorialSteps[currentTutorialStep];
+    const box = document.getElementById('tutorialStepBox');
+    const graphic = document.getElementById('tutorialGraphic');
+    
+    // Reset previous highlights
+    document.querySelectorAll('.tutorial-highlight').forEach(el => el.classList.remove('tutorial-highlight'));
+    
+    // Set new content
+    if (box) {
+        box.style.display = 'block';
+        document.getElementById('tutorialTitle').innerText = step.title;
+        document.getElementById('tutorialText').innerText = step.text;
+        if (graphic) graphic.innerHTML = step.graphic || '';
+        
+        // Highlight element
+        const target = document.getElementById(step.elementId);
+        if (target) {
+            target.classList.add('tutorial-highlight');
+            // Don't scroll for map or header to keep tutorial box visible
+            if (step.elementId !== 'map' && step.elementId !== 'header') {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        // Run action
+        if (step.action) step.action();
+        
+        // Button states
+        document.getElementById('btnPrevStep').disabled = currentTutorialStep === 0;
+        document.getElementById('btnNextStep').innerText = currentTutorialStep === tutorialSteps.length - 1 ? "Finish" : "Next";
+    }
+}
+
+function nextTutorialStep() {
+    if (currentTutorialStep < tutorialSteps.length - 1) {
+        currentTutorialStep++;
+        showTutorialStep();
+    } else {
+        endTutorial();
+    }
+}
+
+function prevTutorialStep() {
+    if (currentTutorialStep > 0) {
+        currentTutorialStep--;
+        showTutorialStep();
+    }
+}
+
+function endTutorial() {
+    isTutorialActive = false;
+    const box = document.getElementById('tutorialStepBox');
+    if (box) box.style.display = 'none';
+    document.querySelectorAll('.tutorial-highlight').forEach(el => el.classList.remove('tutorial-highlight'));
+}
